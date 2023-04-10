@@ -17,7 +17,7 @@ export class ImageFilmService {
     return this.http.post(IMAGE_API + postId + '/upload', uploadData);
   }
 
-  getImageToPost(postId: number): any {
+  getImageToPost(postId: number | undefined): any {
     return this.http.get(IMAGE_API + postId + '/image');
   }
 }
