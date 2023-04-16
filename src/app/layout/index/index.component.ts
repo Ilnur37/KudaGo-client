@@ -63,7 +63,7 @@ export class IndexComponent implements OnInit {
   }
 
   likePost(postId: number, postIndex: number): void {
-    const  post = this.postFilms[postIndex];
+    const post = this.postFilms[postIndex];
     console.log(post);
 
     if (!post.usersLiked.includes(this.user.username)) {

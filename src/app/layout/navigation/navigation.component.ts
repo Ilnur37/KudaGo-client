@@ -21,9 +21,8 @@ export class NavigationComponent implements OnInit{
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenService.getToken();
-
     if (this.isDataLoaded) {
-      this.userService.getCurrentUser()
+     this.userService.getCurrentUser()
         .subscribe(data => {
           this.user = data;
           this.isDataLoaded = true;

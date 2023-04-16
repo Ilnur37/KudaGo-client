@@ -13,6 +13,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { IndexComponent } from './layout/index/index.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { IndexComponent } from './layout/index/index.component';
     LoginComponent,
     RegisterComponent,
     NavigationComponent,
-    IndexComponent
+    IndexComponent,
+    ProfileComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
