@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PostFilm} from "../models/PostFilm";
 
-const POST_API = 'http://localhost:8080/api/postfilm/';
+const POST_API = 'http://localhost:8080/api/postFilm/';
 
 
 @Injectable({

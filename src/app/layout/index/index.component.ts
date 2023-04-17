@@ -5,7 +5,6 @@ import {PostFilmService} from "../../service/post-film.service";
 import {UserService} from "../../service/user.service";
 import {CommentFilmService} from "../../service/comment-film.service";
 import {NotificationService} from "../../service/notification.service";
-import {ImageFilmService} from "../../service/image-film.service";
 
 @Component({
   selector: 'app-index',
@@ -22,8 +21,7 @@ export class IndexComponent implements OnInit {
   constructor(private postFilmService: PostFilmService,
               private userService: UserService,
               private commentFilmService: CommentFilmService,
-              private notificationService: NotificationService,
-              private imageFilmService: ImageFilmService
+              private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +30,6 @@ export class IndexComponent implements OnInit {
         console.log(data);
         this.postFilms = data;
         this.getCommentsToPosts(this.postFilms);
-        this.getImagesToPosts(this.postFilms);
         this.isPostsLoaded = true;
       })
 
@@ -42,15 +39,6 @@ export class IndexComponent implements OnInit {
         this.user = data;
         this.isUserDataLoaded = true;
       })
-  }
-
-  getImagesToPosts(posts: PostFilm[]): void {
-    posts.forEach(p => {
-      this.imageFilmService.getImageToPost(p.id)
-        .subscribe((data: { imageBytes: File | undefined; }) => {
-          p.image = data.imageBytes;
-        })
-    });
   }
 
   getCommentsToPosts(posts: PostFilm[]): void {
@@ -99,10 +87,10 @@ export class IndexComponent implements OnInit {
       });
   }
 
-  formatImage(img: any): any {
+  /*formatImage(img: any): any {
     if (img == null) {
       return null;
     }
     return 'data:image/jpeg;base64,' + img;
-  }
+  }*/
 }
