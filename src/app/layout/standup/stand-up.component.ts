@@ -1,28 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {PostFilm} from "../../models/PostFilm";
 import {User} from "../../models/User";
-import {PostFilmService} from "../../service/post-film.service";
 import {UserService} from "../../service/user.service";
-import {CommentFilmService} from "../../service/comment-film.service";
+import {CommentStandUpService} from "../../service/comment-stand-up.service";
 import {NotificationService} from "../../service/notification.service";
+import {PostStandUp} from "../../models/PostStandUp";
+import {PostStandUpService} from "../../service/post-standup.service";
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'app-standup',
+  templateUrl: './stand-up.component.html',
+  styleUrls: ['./stand-up.component.css']
 })
-export class IndexComponent implements OnInit {
+export class StandUpComponent implements OnInit{
 
   isPostsLoaded = false;
-  posts: PostFilm[] | any;
+  posts: PostStandUp[] | any;
   isUserDataLoaded = false;
   user: User | any;
 
-  constructor(private postService: PostFilmService,
+  constructor(private postService: PostStandUpService,
               private userService: UserService,
-              private commentService: CommentFilmService,
-              private notificationService: NotificationService
-  ) { }
+              private commentService: CommentStandUpService,
+              private notificationService: NotificationService) {
+  }
 
   ngOnInit(): void {
     this.postService.getAllPosts()
@@ -41,7 +41,7 @@ export class IndexComponent implements OnInit {
       })
   }
 
-  getCommentsToPosts(posts: PostFilm[]): void {
+  getCommentsToPosts(posts: PostStandUp[]): void {
     posts.forEach(p => {
       this.commentService.getCommentsToPost(p.id)
         .subscribe(data => {
@@ -71,12 +71,10 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  //postComment(message: string, postId: number, postIndex: number): void {
   postComment(event: Event, postId: number, postIndex: number): void {
     const target = event.target as HTMLInputElement;
     console.log(target.value);
     let message = target.value;
-
     const post = this.posts[postIndex];
 
     console.log(post);
@@ -86,11 +84,4 @@ export class IndexComponent implements OnInit {
         post.comments.push(data);
       });
   }
-
-  /*formatImage(img: any): any {
-    if (img == null) {
-      return null;
-    }
-    return 'data:image/jpeg;base64,' + img;
-  }*/
 }

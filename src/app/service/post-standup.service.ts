@@ -1,20 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {PostStandUp} from "../models/PostStandUp";
 import {Observable} from "rxjs";
-import {PostFilm} from "../models/PostFilm";
 
-const POST_API = 'http://localhost:8080/api/postFilm/';
+const POST_API = 'http://localhost:8080/api/postStandUp/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostFilmService {
+export class PostStandUpService {
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {
-  }
-
-  createPost(postFilm: PostFilm): Observable<any> {
-    return this.http.post(POST_API + 'create', postFilm);
+  createPost(post: PostStandUp): Observable<any> {
+    return this.http.post(POST_API + 'create', post);
   }
 
   getAllPosts(): Observable<any> {

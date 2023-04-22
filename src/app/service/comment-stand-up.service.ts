@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const COMMENT_API = 'http://localhost:8080/api/commentFilm/';
+const COMMENT_API = 'http://localhost:8080/api/commentStandUp/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentFilmService {
+export class CommentStandUpService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   addToCommentToPost(postId: number, message: string): Observable<any> {
     return this.http.post(COMMENT_API + postId + '/create', {

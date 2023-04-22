@@ -15,6 +15,7 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 import { IndexComponent } from './layout/index/index.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { StandUpComponent } from './layout/standup/stand-up.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     NavigationComponent,
     IndexComponent,
     ProfileComponent,
-    EditUserComponent
+    EditUserComponent,
+    StandUpComponent
   ],
   imports: [
     BrowserModule,
