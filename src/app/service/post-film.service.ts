@@ -17,6 +17,10 @@ export class PostFilmService {
     return this.http.post(POST_API + 'create', postFilm);
   }
 
+  getFullInfo(id: number): Observable<any> {
+    return this.http.post(POST_API + id, null);
+  }
+
   getAllPosts(): Observable<any> {
     return this.http.get(POST_API + 'all');
   }

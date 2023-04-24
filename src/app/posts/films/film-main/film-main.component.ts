@@ -1,28 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../models/User";
-import {UserService} from "../../service/user.service";
-import {CommentStandUpService} from "../../service/comment-stand-up.service";
-import {NotificationService} from "../../service/notification.service";
-import {PostStandUp} from "../../models/PostStandUp";
-import {PostStandUpService} from "../../service/post-standup.service";
+import {PostFilm} from "../../../models/PostFilm";
+import {User} from "../../../models/User";
+import {PostFilmService} from "../../../service/post-film.service";
+import {UserService} from "../../../service/user.service";
+import {CommentFilmService} from "../../../service/comment-film.service";
+import {NotificationService} from "../../../service/notification.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {EditUserComponent} from "../../../user/edit-user/edit-user.component";
 
 @Component({
-  selector: 'app-standup',
-  templateUrl: './stand-up.component.html',
-  styleUrls: ['./stand-up.component.css']
+  selector: 'app-film-main-edit',
+  templateUrl: './film-main.component.html',
+  styleUrls: ['./film-main.component.css']
 })
-export class StandUpComponent implements OnInit{
+export class FilmMainComponent implements OnInit {
 
   isPostsLoaded = false;
-  posts: PostStandUp[] | any;
+  posts: PostFilm[] | any;
   isUserDataLoaded = false;
   user: User | any;
 
-  constructor(private postService: PostStandUpService,
+  constructor(private postService: PostFilmService,
               private userService: UserService,
-              private commentService: CommentStandUpService,
-              private notificationService: NotificationService) {
-  }
+              private commentService: CommentFilmService,
+              private dialog: MatDialog,
+              private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.postService.getAllPosts()
@@ -41,7 +44,7 @@ export class StandUpComponent implements OnInit{
       })
   }
 
-  getCommentsToPosts(posts: PostStandUp[]): void {
+  getCommentsToPosts(posts: PostFilm[]): void {
     posts.forEach(p => {
       this.commentService.getCommentsToPost(p.id)
         .subscribe(data => {
@@ -71,10 +74,12 @@ export class StandUpComponent implements OnInit{
     }
   }
 
+  //postComment(message: string, postId: number, postIndex: number): void {
   postComment(event: Event, postId: number, postIndex: number): void {
     const target = event.target as HTMLInputElement;
     console.log(target.value);
     let message = target.value;
+
     const post = this.posts[postIndex];
 
     console.log(post);
@@ -84,4 +89,14 @@ export class StandUpComponent implements OnInit{
         post.comments.push(data);
       });
   }
+
+  /*openEditDialog(): void {
+    const dialogUserEditConfig = new MatDialogConfig();
+    dialogUserEditConfig.width = '400px';
+    dialogUserEditConfig.data = {
+      post: this.posts
+    };
+    this.dialog.open(EditUserComponent, dialogUserEditConfig);
+  }*/
+
 }

@@ -15,7 +15,10 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 import { IndexComponent } from './layout/index/index.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
-import { StandUpComponent } from './layout/standup/stand-up.component';
+import { StandUpComponent } from './posts/standups/standup/stand-up.component';
+import { FilmMainComponent } from './posts/films/film-main/film-main.component';
+import { FilmEditComponent } from './posts/admin/film-edit/film-edit.component';
+import { FilmInfoComponent } from './posts/films/film-info/film-info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { StandUpComponent } from './layout/standup/stand-up.component';
     IndexComponent,
     ProfileComponent,
     EditUserComponent,
-    StandUpComponent
+    StandUpComponent,
+    FilmMainComponent,
+    FilmEditComponent,
+    FilmInfoComponent
   ],
   imports: [
     BrowserModule,
