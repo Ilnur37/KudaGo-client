@@ -18,7 +18,8 @@ export class PostFilmService {
   }
 
   getFullInfo(id: number): Observable<any> {
-    return this.http.post(POST_API + id, null);
+    // @ts-ignore
+    return this.http.get(POST_API + id, id);
   }
 
   getAllPosts(): Observable<any> {

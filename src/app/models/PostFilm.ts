@@ -5,8 +5,8 @@ export interface PostFilm {
   title: string;
   info: string;
   shortInfo: string;
-  genre: string;
-  cinema: string;
+  genre?: string;
+  cinema?: string;
   image?: string;
   likes?: number;
   usersLiked?: string[];

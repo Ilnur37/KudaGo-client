@@ -5,8 +5,6 @@ import {PostFilmService} from "../../../service/post-film.service";
 import {UserService} from "../../../service/user.service";
 import {CommentFilmService} from "../../../service/comment-film.service";
 import {NotificationService} from "../../../service/notification.service";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {EditUserComponent} from "../../../user/edit-user/edit-user.component";
 
 @Component({
   selector: 'app-film-main-edit',
@@ -23,7 +21,6 @@ export class FilmMainComponent implements OnInit {
   constructor(private postService: PostFilmService,
               private userService: UserService,
               private commentService: CommentFilmService,
-              private dialog: MatDialog,
               private notificationService: NotificationService
   ) { }
 
@@ -89,14 +86,4 @@ export class FilmMainComponent implements OnInit {
         post.comments.push(data);
       });
   }
-
-  /*openEditDialog(): void {
-    const dialogUserEditConfig = new MatDialogConfig();
-    dialogUserEditConfig.width = '400px';
-    dialogUserEditConfig.data = {
-      post: this.posts
-    };
-    this.dialog.open(EditUserComponent, dialogUserEditConfig);
-  }*/
-
 }

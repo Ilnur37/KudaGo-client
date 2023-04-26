@@ -7,12 +7,14 @@ import {AuthGuardService} from "./helper/auth-guard.service";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {StandUpComponent} from "./posts/standups/standup/stand-up.component";
 import {FilmMainComponent} from "./posts/films/film-main/film-main.component";
+import {FilmInfoComponent} from "./posts/films/film-info/film-info.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
   {path: 'film', component: FilmMainComponent, canActivate: [AuthGuardService]},
+  {path: 'film/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
   {path: 'standUp', component: StandUpComponent, canActivate: [AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'}
