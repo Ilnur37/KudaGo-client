@@ -15,13 +15,24 @@ const routes: Routes = [
   {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
   {path: 'film', component: FilmMainComponent, canActivate: [AuthGuardService]},
   {path: 'film/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
+
+  /*{
+    path: 'film',
+    component: FilmMainComponent,
+    canActivate: [AuthGuardService],
+    canActivateChild: [AuthGuardService],
+    children: [
+      {path: ':id', component: FilmInfoComponent}
+    ]
+  },*/
+
   {path: 'standUp', component: StandUpComponent, canActivate: [AuthGuardService]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes), RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

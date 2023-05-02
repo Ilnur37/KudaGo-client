@@ -1,5 +1,44 @@
-<div *ngIf="isPostLoaded && isUserDataLoaded" class="index-page">
-  <p>film-info works!</p>
-  <mat-card-title>{{post?.title}}</mat-card-title>
-  <p>film-info works!</p>
+<div *ngIf="isPostLoaded && isUserDataLoaded" class="post-profile">
+
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" (click)="openEditDialog()">Редактировать</button>
+  </div>
+
+  <div style="padding-top: 2rem" class="row">
+    <div class="col">
+      <img class="post-image" [src]="(post.image)" alt="post image">
+    </div>
+
+    <div class="col" style="text-align: left; margin-left: -200px">
+      <h1 style="font-family: 'Arial Black'">
+        {{post.title}}
+        <button style="display: inline; text-align: right" *ngIf="isUserDataLoaded" mat-button (click)="likePost()" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+          <mat-icon class="icon-display">favorite</mat-icon>
+        </button>
+      </h1>
+
+      <h3 style="font-style: italic">{{post.genre}}</h3>
+      <h3 style="font-style: italic">{{post.shortInfo}}</h3>
+    </div>
+
+    <div style="text-align: left">
+      <h1 style="font-family: 'Arial Black'; ">О фильме</h1>
+      <h3 style="font-style: italic">{{post.info}}</h3>
+    </div>
+
+    <div style="text-align: left; margin-top: 100px">
+      <h1 style="font-family: 'Arial Black'; ">Отзывы</h1>
+
+      <mat-form-field class="w-100">
+        <mat-label>Оставить отзыв</mat-label>
+        <input  (keyup.enter)="postComment($event)" matInput #message maxlength="128">
+        <mat-hint align="end">{{message.value.length}} / 128</mat-hint>
+      </mat-form-field>
+
+      <p *ngFor="let comment of post.comments"><span style="font-weight: 500">{{comment.username}}</span>: {{comment.message}}</p>
+    </div>
+
+    <mat-divider style="margin: 2rem 0"></mat-divider>
+
+  </div>
 </div>

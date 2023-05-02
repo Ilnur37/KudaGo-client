@@ -1,0 +1,28 @@
+.post-profile {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+  padding-top: 3rem;
+}
+
+.post-image {
+  width: 300px;
+  height: 442px;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.is-liked {
+  color: #8b0000;
+}
+
+.not-liked {
+  color: grey;
+}
+
+.icon-display {
+  transform: scale(1.5);
+}

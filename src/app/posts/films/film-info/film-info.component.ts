@@ -6,6 +6,9 @@ import {UserService} from "../../../service/user.service";
 import {CommentFilmService} from "../../../service/comment-film.service";
 import {NotificationService} from "../../../service/notification.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {EditUserComponent} from "../../../user/edit-user/edit-user.component";
+import {FilmEditComponent} from "../../admin/film-edit/film-edit.component";
 
 @Component({
   selector: 'app-film-info',
@@ -18,12 +21,14 @@ export class FilmInfoComponent implements OnInit {
   post: PostFilm | any;
   isUserDataLoaded = false;
   user: User | any;
+  isAdmin = false;
 
   constructor(private route: ActivatedRoute,
               private postService: PostFilmService,
               private userService: UserService,
               private commentService: CommentFilmService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -43,6 +48,9 @@ export class FilmInfoComponent implements OnInit {
         console.log(data);
         this.user = data;
         this.isUserDataLoaded = true;
+        if (data.role = "ROLE_ADMIN")
+          this.isAdmin = true;
+        console.log(this.isAdmin);
       })
   }
 
@@ -86,7 +94,14 @@ export class FilmInfoComponent implements OnInit {
       });
   }
 
-
+  openEditDialog(): void {
+    const dialogPostEditConfig = new MatDialogConfig();
+    dialogPostEditConfig.width = '400px';
+    dialogPostEditConfig.data = {
+      post: this.post
+    };
+    this.dialog.open(FilmEditComponent, dialogPostEditConfig);
+  }
 
 
 
