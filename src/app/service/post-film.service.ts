@@ -26,8 +26,8 @@ export class PostFilmService {
     return this.http.get(POST_API + 'all');
   }
 
-  updatePost(id: number, post: PostFilm): Observable<any> {
-    return this.http.post(POST_API + id + '/update', id);
+  updatePost(post: any): Observable<any> {
+    return this.http.post(POST_API + 'update', post);
   }
 
   deletePost(id: number): Observable<any> {

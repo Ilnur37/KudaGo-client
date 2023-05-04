@@ -12,6 +12,5 @@ export interface PostFilm {
   likes?: number;
   usersLiked?: string[];
   comments?: CommentFilm [];
-  username?: string;
 }
 

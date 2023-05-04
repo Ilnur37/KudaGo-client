@@ -1,1 +1,53 @@
-<p>film works!</p>
+<div class="edit-post">
+  <h2>Edit User Profile</h2>
+  <form [formGroup]="postEditForm" class="form-horizontal">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Название</mat-label>
+      <input matInput
+             formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Полная информация</mat-label>
+      <textarea matInput
+                formControlName="info"></textarea>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Краткая информация</mat-label>
+      <textarea matInput
+                formControlName="shortInfo"></textarea>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Жанр</mat-label>
+      <input matInput
+             formControlName="genre">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Кинотеатр</mat-label>
+      <textarea matInput
+                formControlName="cinema"></textarea>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Фото</mat-label>
+      <input matInput
+             formControlName="image">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Обложка</mat-label>
+      <input matInput
+             formControlName="backgroundImg">
+    </mat-form-field>
+
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Cancel
+      </button>
+      <button color="primary" class="w-50" [disabled]="postEditForm.invalid" (click)="submit()" mat-button disableRipple>
+        Обновить
+      </button>
+      <button color="white" class="w-50" [disabled]="postEditForm.invalid" (click)="delete()" mat-button disableRipple>
+        Удалить
+      </button>
+    </div>
+  </form>
+</div>

@@ -60,7 +60,7 @@ export class FilmEditComponent implements OnInit {
   }
 
   submit(): void {
-    this.postService.updatePost(this.data.post.id, this.updatePost())
+    this.postService.updatePost(this.updatePost())
       .subscribe(() => {
         this.notificationService.showSnackBar('Post updated successfully');
         this.dialogRef.close();

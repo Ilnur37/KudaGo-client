@@ -48,7 +48,7 @@ export class FilmInfoComponent implements OnInit {
         console.log(data);
         this.user = data;
         this.isUserDataLoaded = true;
-        if (data.role = "ROLE_ADMIN")
+        if (data.role == "ROLE_ADMIN")
           this.isAdmin = true;
         console.log(this.isAdmin);
       })

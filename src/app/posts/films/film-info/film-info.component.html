@@ -1,7 +1,7 @@
 <div *ngIf="isPostLoaded && isUserDataLoaded" class="post-profile">
 
   <div style="text-align: right">
-    <button mat-flat-button color="primary" (click)="openEditDialog()">Редактировать</button>
+    <button mat-flat-button color="primary" *ngIf="isAdmin" (click)="openEditDialog()">Редактировать</button>
   </div>
 
   <div style="padding-top: 2rem" class="row">
@@ -9,16 +9,19 @@
       <img class="post-image" [src]="(post.image)" alt="post image">
     </div>
 
-    <div class="col" style="text-align: left; margin-left: -200px">
+    <div class="col-6" style="text-align: left">
       <h1 style="font-family: 'Arial Black'">
         {{post.title}}
-        <button style="display: inline; text-align: right" *ngIf="isUserDataLoaded" mat-button (click)="likePost()" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
-          <mat-icon class="icon-display">favorite</mat-icon>
-        </button>
       </h1>
 
       <h3 style="font-style: italic">{{post.genre}}</h3>
       <h3 style="font-style: italic">{{post.shortInfo}}</h3>
+    </div>
+
+    <div class="col" style="display: block">
+      <button style="text-align: right" *ngIf="isUserDataLoaded" mat-button (click)="likePost()" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+        <mat-icon class="icon-display">favorite</mat-icon>
+      </button>
     </div>
 
     <div style="text-align: left">
