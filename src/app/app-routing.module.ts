@@ -13,8 +13,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
-  {path: 'film', component: FilmMainComponent, canActivate: [AuthGuardService]},
-  {path: 'film/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
+  {path: 'film/:sorted', component: FilmMainComponent, canActivate: [AuthGuardService]},
+  {path: 'film/info/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
 
   /*{
     path: 'film',

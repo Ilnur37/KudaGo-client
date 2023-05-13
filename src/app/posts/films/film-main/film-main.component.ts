@@ -3,8 +3,8 @@ import {PostFilm} from "../../../models/PostFilm";
 import {User} from "../../../models/User";
 import {PostFilmService} from "../../../service/post-film.service";
 import {UserService} from "../../../service/user.service";
-import {CommentFilmService} from "../../../service/comment-film.service";
 import {NotificationService} from "../../../service/notification.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-film-main-edit',
@@ -17,21 +17,24 @@ export class FilmMainComponent implements OnInit {
   posts: PostFilm[] | any;
   isUserDataLoaded = false;
   user: User | any;
+  selected : string | any;
+  titleSearch : string = '';
 
-  constructor(private postService: PostFilmService,
+  constructor(private route: ActivatedRoute,
+              private postService: PostFilmService,
               private userService: UserService,
-              private commentService: CommentFilmService,
               private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
-    this.postService.getAllPosts()
-      .subscribe(data => {
-        console.log(data);
-        this.posts = data;
-        this.getCommentsToPosts(this.posts);
-        this.isPostsLoaded = true;
+    this.route.params.subscribe((param: Params) => {
+      this.postService.getAllPosts(param['sorted'])
+        .subscribe(data => {
+          console.log(data);
+          this.posts = data;
+          this.isPostsLoaded = true;
       })
+    })
 
     this.userService.getCurrentUser()
       .subscribe(data => {
@@ -39,15 +42,6 @@ export class FilmMainComponent implements OnInit {
         this.user = data;
         this.isUserDataLoaded = true;
       })
-  }
-
-  getCommentsToPosts(posts: PostFilm[]): void {
-    posts.forEach(p => {
-      this.commentService.getCommentsToPost(p.id)
-        .subscribe(data => {
-          p.comments = data
-        })
-    });
   }
 
   likePost(postId: number, postIndex: number): void {
@@ -71,19 +65,7 @@ export class FilmMainComponent implements OnInit {
     }
   }
 
-  //postComment(message: string, postId: number, postIndex: number): void {
-  postComment(event: Event, postId: number, postIndex: number): void {
-    const target = event.target as HTMLInputElement;
-    console.log(target.value);
-    let message = target.value;
-
-    const post = this.posts[postIndex];
-
-    console.log(post);
-    this.commentService.addToCommentToPost(postId, message)
-      .subscribe(data => {
-        console.log(data);
-        post.comments.push(data);
-      });
+  clearFields() {
+    this.selected = "default"
   }
 }

@@ -7,7 +7,6 @@ import {CommentFilmService} from "../../../service/comment-film.service";
 import {NotificationService} from "../../../service/notification.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {EditUserComponent} from "../../../user/edit-user/edit-user.component";
 import {FilmEditComponent} from "../../admin/film-edit/film-edit.component";
 
 @Component({

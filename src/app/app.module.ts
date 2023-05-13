@@ -19,6 +19,8 @@ import { StandUpComponent } from './posts/standups/standup/stand-up.component';
 import { FilmMainComponent } from './posts/films/film-main/film-main.component';
 import { FilmEditComponent } from './posts/admin/film-edit/film-edit.component';
 import { FilmInfoComponent } from './posts/films/film-info/film-info.component';
+import {MatSelectModule} from "@angular/material/select";
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { FilmInfoComponent } from './posts/films/film-info/film-info.component';
     StandUpComponent,
     FilmMainComponent,
     FilmEditComponent,
-    FilmInfoComponent
+    FilmInfoComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { FilmInfoComponent } from './posts/films/film-info/film-info.component';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [
     authInterceptorProviders,

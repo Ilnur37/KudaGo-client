@@ -1,7 +1,7 @@
 import {CommentFilm} from './CommentFilm';
 
 export interface PostFilm {
-  id?: number;
+  id: number;
   title: string;
   info: string;
   shortInfo: string;
@@ -10,7 +10,8 @@ export interface PostFilm {
   image?: string;
   backgroundImg?: string
   likes?: number;
-  usersLiked?: string[];
+  rating?: string;
+  usersLiked: string[];
   comments?: CommentFilm [];
 }
 

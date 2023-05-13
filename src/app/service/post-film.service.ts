@@ -17,13 +17,14 @@ export class PostFilmService {
     return this.http.post(POST_API + 'create', postFilm);
   }
 
-  getFullInfo(id: number): Observable<any> {
+  getAllPosts(sorted: string): Observable<any> {
     // @ts-ignore
-    return this.http.get(POST_API + id, id);
+    return this.http.get(POST_API + 'all/' + sorted, sorted);
   }
 
-  getAllPosts(): Observable<any> {
-    return this.http.get(POST_API + 'all');
+  getFullInfo(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.get(POST_API + 'info/' + id, id);
   }
 
   updatePost(post: any): Observable<any> {
