@@ -4,34 +4,39 @@ import {UserService} from "../../../service/user.service";
 import {CommentStandUpService} from "../../../service/comment-stand-up.service";
 import {NotificationService} from "../../../service/notification.service";
 import {PostStandUp} from "../../../models/PostStandUp";
+import {ActivatedRoute, Params} from "@angular/router";
+import {PostFilmService} from "../../../service/post-film.service";
 import {PostStandUpService} from "../../../service/post-standup.service";
 
 @Component({
-  selector: 'app-standup',
-  templateUrl: './stand-up.component.html',
-  styleUrls: ['./stand-up.component.css']
+  selector: 'app-standup-main',
+  templateUrl: './stand-up-main.component.html',
+  styleUrls: ['./stand-up-main.component.css']
 })
-export class StandUpComponent implements OnInit{
+export class StandUpMainComponent implements OnInit{
 
   isPostsLoaded = false;
   posts: PostStandUp[] | any;
   isUserDataLoaded = false;
   user: User | any;
+  selected : string | any;
+  titleSearch : string = '';
 
-  constructor(private postService: PostStandUpService,
+  constructor(private route: ActivatedRoute,
+              private postService: PostStandUpService,
               private userService: UserService,
-              private commentService: CommentStandUpService,
               private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
-    this.postService.getAllPosts()
-      .subscribe(data => {
-        console.log(data);
-        this.posts = data;
-        this.getCommentsToPosts(this.posts);
-        this.isPostsLoaded = true;
-      })
+    this.route.params.subscribe((param: Params) => {
+      this.postService.getAllPosts(param['sorted'])
+        .subscribe(data => {
+          console.log(data);
+          this.posts = data;
+          this.isPostsLoaded = true;
+        })
+    })
 
     this.userService.getCurrentUser()
       .subscribe(data => {
@@ -39,15 +44,6 @@ export class StandUpComponent implements OnInit{
         this.user = data;
         this.isUserDataLoaded = true;
       })
-  }
-
-  getCommentsToPosts(posts: PostStandUp[]): void {
-    posts.forEach(p => {
-      this.commentService.getCommentsToPost(p.id)
-        .subscribe(data => {
-          p.comments = data
-        })
-    });
   }
 
   likePost(postId: number, postIndex: number): void {
@@ -69,19 +65,5 @@ export class StandUpComponent implements OnInit{
           }
         });
     }
-  }
-
-  postComment(event: Event, postId: number, postIndex: number): void {
-    const target = event.target as HTMLInputElement;
-    console.log(target.value);
-    let message = target.value;
-    const post = this.posts[postIndex];
-
-    console.log(post);
-    this.commentService.addToCommentToPost(postId, message)
-      .subscribe(data => {
-        console.log(data);
-        post.comments.push(data);
-      });
   }
 }

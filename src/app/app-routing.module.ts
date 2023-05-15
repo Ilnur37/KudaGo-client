@@ -5,9 +5,10 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {IndexComponent} from "./layout/index/index.component";
 import {AuthGuardService} from "./helper/auth-guard.service";
 import {ProfileComponent} from "./user/profile/profile.component";
-import {StandUpComponent} from "./posts/standups/standup/stand-up.component";
+import {StandUpMainComponent} from "./posts/standups/standup-main/stand-up-main.component";
 import {FilmMainComponent} from "./posts/films/film-main/film-main.component";
 import {FilmInfoComponent} from "./posts/films/film-info/film-info.component";
+import {StandUpInfoComponent} from "./posts/standups/standup-info/stand-up-info.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,7 +27,9 @@ const routes: Routes = [
     ]
   },*/
 
-  {path: 'standUp', component: StandUpComponent, canActivate: [AuthGuardService]},
+  {path: 'standUp/:sorted', component: StandUpMainComponent, canActivate: [AuthGuardService]},
+  {path: 'standUp/info/:id', component: StandUpInfoComponent, canActivate: [AuthGuardService]},
+
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'}
 ];

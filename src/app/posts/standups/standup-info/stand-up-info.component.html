@@ -5,7 +5,7 @@
   </div>
 
   <div style="padding-top: 2rem;" class="row">
-    <div class="col-4" style="width: 330px">
+    <div class="col-5" style="width: 450px">
       <img class="post-image" [src]="(post.image)" alt="post image">
     </div>
 
@@ -24,12 +24,20 @@
 
       <h3 style="font-style: italic">{{post.genre}}</h3>
       <h3 style="font-style: italic">{{post.shortInfo}}</h3>
-      <h3 *ngIf="post.rating != ''" style="font-style: italic">Рейтинг кинопоиска: {{post.rating}}</h3>
+      <div *ngIf="post.executor != ''" style="text-align: left">
+        <h1 style="font-family: 'Arial Black'">Исполнитель</h1>
+        <pre><h3 style="font-style: italic">{{post.executor}}</h3></pre>
+      </div>
     </div>
 
     <div style="text-align: left">
-      <h1 style="font-family: 'Arial Black'">О фильме</h1>
+      <h1 style="font-family: 'Arial Black'">О концерте</h1>
       <pre><h3 style="font-style: italic; white-space: pre-line;">{{post.info}}</h3></pre>
+    </div>
+
+    <div *ngIf="post.address != ''" style="text-align: left">
+      <h1 style="font-family: 'Arial Black'">Адрес</h1>
+      <pre><h3 style="font-style: italic; white-space: pre-line;">{{post.address}}</h3></pre>
     </div>
 
     <div style="text-align: left; margin-top: 100px">

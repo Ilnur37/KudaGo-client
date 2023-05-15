@@ -15,8 +15,18 @@ export class PostStandUpService {
     return this.http.post(POST_API + 'create', post);
   }
 
-  getAllPosts(): Observable<any> {
-    return this.http.get(POST_API + 'all');
+  getAllPosts(sorted: string): Observable<any> {
+    // @ts-ignore
+    return this.http.get(POST_API + 'all/' + sorted, sorted);
+  }
+
+  getFullInfo(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.get(POST_API + 'info/' + id, id);
+  }
+
+  updatePost(post: any): Observable<any> {
+    return this.http.post(POST_API + 'update', post);
   }
 
   deletePost(id: number): Observable<any> {

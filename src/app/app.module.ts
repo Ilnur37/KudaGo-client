@@ -15,12 +15,14 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 import { IndexComponent } from './layout/index/index.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
-import { StandUpComponent } from './posts/standups/standup/stand-up.component';
+import { StandUpMainComponent } from './posts/standups/standup-main/stand-up-main.component';
 import { FilmMainComponent } from './posts/films/film-main/film-main.component';
 import { FilmEditComponent } from './posts/admin/film-edit/film-edit.component';
 import { FilmInfoComponent } from './posts/films/film-info/film-info.component';
 import {MatSelectModule} from "@angular/material/select";
 import { FilterPipe } from './pipes/filter.pipe';
+import { StandUpInfoComponent } from './posts/standups/standup-info/stand-up-info.component';
+import { StandUpEditComponent } from './posts/admin/stand-up-edit/stand-up-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import { FilterPipe } from './pipes/filter.pipe';
     IndexComponent,
     ProfileComponent,
     EditUserComponent,
-    StandUpComponent,
+    StandUpMainComponent,
     FilmMainComponent,
     FilmEditComponent,
     FilmInfoComponent,
     FilterPipe,
+    StandUpInfoComponent,
+    StandUpEditComponent,
   ],
   imports: [
     BrowserModule,

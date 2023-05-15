@@ -6,7 +6,7 @@ import {PostFilm} from "../models/PostFilm";
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(posts: PostFilm[], titleSearch: string = ''): PostFilm[] {
+  transform(posts: any[], titleSearch: string = ''): any[] {
     if (!titleSearch.trim()) {
       return posts;
     }

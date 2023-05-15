@@ -5,11 +5,11 @@ export interface PostStandUp {
   title: string;
   info: string;
   shortInfo: string;
-  genre: string;
-  executor: string;
+  genre?: string;
+  executor?: string;
+  address?: string;
   image?: string;
   likes?: number;
-  usersLiked?: string[];
+  usersLiked: string[];
   comments?: CommentStandUp [];
-  username?: string;
 }
