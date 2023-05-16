@@ -15,14 +15,6 @@
   margin-bottom: 2rem;
 }
 
-.is-liked {
-  color: #8b0000;
-}
-
-.not-liked {
-  color: grey;
-}
-
 .icon-display {
   transform: scale(1.5);
 }

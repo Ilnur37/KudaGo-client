@@ -12,14 +12,6 @@
   margin: 20px;
 }
 
-.is-liked {
-  color: darkred;
-}
-
-.not-liked {
-  color: grey;
-}
-
 img {
   border-radius: 10px;
   margin-left: 10px;

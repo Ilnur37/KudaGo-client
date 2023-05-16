@@ -95,21 +95,10 @@ export class FilmInfoComponent implements OnInit {
 
   openEditDialog(): void {
     const dialogPostEditConfig = new MatDialogConfig();
-    dialogPostEditConfig.width = '400px';
+    dialogPostEditConfig.width = '550px';
     dialogPostEditConfig.data = {
       post: this.post
     };
     this.dialog.open(FilmEditComponent, dialogPostEditConfig);
   }
-
-
-
-  /*openEditDialog(): void {
-    const dialogUserEditConfig = new MatDialogConfig();
-    dialogUserEditConfig.width = '400px';
-    dialogUserEditConfig.data = {
-      post: this.posts
-    };
-    this.dialog.open(EditUserComponent, dialogUserEditConfig);
-  }*/
 }

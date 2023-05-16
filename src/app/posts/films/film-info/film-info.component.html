@@ -11,10 +11,11 @@
 
     <div class="col" style="text-align: left; width: 400px">
       <div>
-        <h1 style="font-family: 'Arial Black'; display:inline-block;">
+        <h1 style="display:inline-block;">
           {{post.title}}
         </h1>
-        <button style="float: right; display:inline-block; margin-right: 30px" *ngIf="isUserDataLoaded" mat-button
+        <button style="float: right; display:inline-block; margin-right: 30px"
+                *ngIf="isUserDataLoaded" mat-button
                 (click)="likePost()"
                 [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
           <mat-icon class="icon-display">favorite</mat-icon>
@@ -22,18 +23,20 @@
         </button>
       </div>
 
-      <h3 style="font-style: italic">{{post.genre}}</h3>
-      <h3 style="font-style: italic">{{post.shortInfo}}</h3>
-      <h3 *ngIf="post.rating != ''" style="font-style: italic">Рейтинг кинопоиска: {{post.rating}}</h3>
+      <h5>{{post.genre}}</h5>
+      <h5>{{post.shortInfo}}</h5>
+      <h5 *ngIf="post.rating != ''">Рейтинг кинопоиска: {{post.rating}}</h5>
     </div>
 
+    <mat-divider style="margin: 2rem 0"></mat-divider>
+
     <div style="text-align: left">
-      <h1 style="font-family: 'Arial Black'">О фильме</h1>
-      <pre><h3 style="font-style: italic; white-space: pre-line;">{{post.info}}</h3></pre>
+      <h1>О фильме</h1>
+      <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
     </div>
 
     <div style="text-align: left; margin-top: 100px">
-      <h1 style="font-family: 'Arial Black'; ">Отзывы</h1>
+      <h2>Отзывы</h2>
 
       <mat-form-field class="w-100">
         <mat-label>Оставить отзыв</mat-label>
