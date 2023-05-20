@@ -38,19 +38,19 @@ export class StandUpEditComponent implements OnInit {
       ],
       shortInfo : [
         this.data.post.shortInfo,
-        Validators.compose([Validators.required])
+        Validators.compose(null)
       ],
       genre : [
         this.data.post.genre,
-        Validators.compose([Validators.required])
+        Validators.compose(null)
       ],
       executor : [
         this.data.post.executor,
-        Validators.compose([Validators.required])
+        Validators.compose(null)
       ],
       address : [
         this.data.post.address,
-        Validators.compose([Validators.required])
+        Validators.compose(null)
       ],
       image : [
         this.data.post.image,
@@ -62,7 +62,7 @@ export class StandUpEditComponent implements OnInit {
   submit(): void {
     this.postService.updatePost(this.updatePost())
       .subscribe(() => {
-        this.notificationService.showSnackBar('Post updated successfully');
+        this.notificationService.showSnackBar('Пост успешно обновлен');
         this.dialogRef.close();
       });
   }
@@ -70,7 +70,7 @@ export class StandUpEditComponent implements OnInit {
   delete(): void {
     this.postService.deletePost(this.data.post.id)
       .subscribe(() => {
-        this.notificationService.showSnackBar('Post deleted successfully');
+        this.notificationService.showSnackBar('Пост успешно удален');
         this.dialogRef.close();
       });
   }
