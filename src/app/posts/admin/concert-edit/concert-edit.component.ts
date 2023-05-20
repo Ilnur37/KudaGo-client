@@ -2,24 +2,24 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {NotificationService} from "../../../service/notification.service";
-import {PostStandUpService} from "../../../service/post-standup.service";
-import {PostStandUp} from "../../../models/PostStandUp";
+import {PostConcertService} from "../../../service/post-concert.service";
+import {PostConcert} from "../../../models/PostConcert";
 
 @Component({
-  selector: 'app-stand-up-edit',
-  templateUrl: './stand-up-edit.component.html',
-  styleUrls: ['./stand-up-edit.component.css']
+  selector: 'app-concert-edit',
+  templateUrl: './concert-edit.component.html',
+  styleUrls: ['./concert-edit.component.css']
 })
-export class StandUpEditComponent implements OnInit {
+export class ConcertEditComponent implements OnInit {
 
   public postEditForm: FormGroup | any;
 
-  constructor(private dialogRef: MatDialogRef<StandUpEditComponent>,
+  constructor(private dialogRef: MatDialogRef<ConcertEditComponent>,
               private fb: FormBuilder,
               private notificationService: NotificationService,
               // @ts-ignore
               @Inject(MAT_DIALOG_DATA) public data,
-              private postService: PostStandUpService) {
+              private postService: PostConcertService) {
   }
 
   ngOnInit(): void {
@@ -75,7 +75,7 @@ export class StandUpEditComponent implements OnInit {
       });
   }
 
-  private updatePost(): PostStandUp {
+  private updatePost(): PostConcert {
     this.data.post.title = this.postEditForm.value.title;
     this.data.post.info = this.postEditForm.value.info;
     this.data.post.shortInfo = this.postEditForm.value.shortInfo;

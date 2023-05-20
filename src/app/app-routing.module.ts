@@ -9,6 +9,8 @@ import {StandUpMainComponent} from "./posts/standups/standup-main/stand-up-main.
 import {FilmMainComponent} from "./posts/films/film-main/film-main.component";
 import {FilmInfoComponent} from "./posts/films/film-info/film-info.component";
 import {StandUpInfoComponent} from "./posts/standups/standup-info/stand-up-info.component";
+import {ConcertMainComponent} from "./posts/concerts/concert-main/concert-main.component";
+import {ConcertInfoComponent} from "./posts/concerts/concert-info/concert-info.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -29,6 +31,10 @@ const routes: Routes = [
 
   {path: 'standUp/:sorted', component: StandUpMainComponent, canActivate: [AuthGuardService]},
   {path: 'standUp/info/:id', component: StandUpInfoComponent, canActivate: [AuthGuardService]},
+
+  {path: 'concert/:sorted', component: ConcertMainComponent, canActivate: [AuthGuardService]},
+  {path: 'concert/info/:id', component: ConcertInfoComponent, canActivate: [AuthGuardService]},
+
 
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'}

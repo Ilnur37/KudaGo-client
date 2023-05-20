@@ -1,30 +1,30 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../models/User";
+import {ActivatedRoute, Params} from "@angular/router";
 import {UserService} from "../../../service/user.service";
 import {NotificationService} from "../../../service/notification.service";
-import {PostStandUp} from "../../../models/PostStandUp";
-import {ActivatedRoute, Params} from "@angular/router";
-import {PostStandUpService} from "../../../service/post-standup.service";
+import {PostConcert} from "../../../models/PostConcert";
+import {PostConcertService} from "../../../service/post-concert.service";
 
 @Component({
-  selector: 'app-standup-main',
-  templateUrl: './stand-up-main.component.html',
-  styleUrls: ['./stand-up-main.component.css']
+  selector: 'app-concert-main',
+  templateUrl: './concert-main.component.html',
+  styleUrls: ['./concert-main.component.css']
 })
-export class StandUpMainComponent implements OnInit{
+export class ConcertMainComponent implements OnInit {
 
   isPostsLoaded = false;
-  posts: PostStandUp[] | any;
+  posts: PostConcert[] | any;
   isUserDataLoaded = false;
   user: User | any;
   selected : string | any;
   titleSearch : string = '';
 
   constructor(private route: ActivatedRoute,
-              private postService: PostStandUpService,
+              private postService: PostConcertService,
               private userService: UserService,
-              private notificationService: NotificationService) {
-  }
+              private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((param: Params) => {
@@ -64,4 +64,9 @@ export class StandUpMainComponent implements OnInit{
         });
     }
   }
+
+  clearFields() {
+    this.selected = "default"
+  }
+
 }

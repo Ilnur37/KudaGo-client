@@ -1,0 +1,59 @@
+<div class="edit-post">
+  <h2>Edit User Profile</h2>
+  <form [formGroup]="postEditForm" class="form-horizontal">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Название</mat-label>
+      <input matInput
+             formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Полная информация</mat-label>
+      <textarea style="height: 150px" matInput
+                formControlName="info"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Краткая информация</mat-label>
+      <textarea style="height: 100px" matInput
+                formControlName="shortInfo"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Жанр</mat-label>
+      <input matInput
+             formControlName="genre">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label >Исполнитель</mat-label>
+      <textarea matInput
+                formControlName="executor"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Адрес</mat-label>
+      <textarea style="height: 100px" matInput
+                formControlName="address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Фото</mat-label>
+      <input matInput
+             formControlName="image">
+    </mat-form-field>
+
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="postEditForm.invalid" (click)="submit()" mat-button disableRipple>
+        Обновить
+      </button>
+      <button color="white" class="w-50" [disabled]="postEditForm.invalid" (click)="delete()" mat-button disableRipple>
+        Удалить
+      </button>
+    </div>
+  </form>
+</div>

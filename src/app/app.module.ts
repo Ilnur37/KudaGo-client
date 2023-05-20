@@ -23,6 +23,9 @@ import {MatSelectModule} from "@angular/material/select";
 import { FilterPipe } from './pipes/filter.pipe';
 import { StandUpInfoComponent } from './posts/standups/standup-info/stand-up-info.component';
 import { StandUpEditComponent } from './posts/admin/stand-up-edit/stand-up-edit.component';
+import { ConcertMainComponent } from './posts/concerts/concert-main/concert-main.component';
+import { ConcertInfoComponent } from './posts/concerts/concert-info/concert-info.component';
+import { ConcertEditComponent } from './posts/admin/concert-edit/concert-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { StandUpEditComponent } from './posts/admin/stand-up-edit/stand-up-edit.
     FilterPipe,
     StandUpInfoComponent,
     StandUpEditComponent,
+    ConcertMainComponent,
+    ConcertInfoComponent,
+    ConcertEditComponent,
   ],
   imports: [
     BrowserModule,

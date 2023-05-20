@@ -27,6 +27,8 @@
       <h5>{{post.shortInfo}}</h5>
     </div>
 
+    <mat-divider style="margin: 2rem 0"></mat-divider>
+
     <div style="text-align: left">
       <h1>О концерте</h1>
       <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
@@ -34,7 +36,7 @@
 
     <div *ngIf="post.executor != ''" style="text-align: left">
       <h1>Исполнитель</h1>
-      <pre><h5>{{post.executor}}</h5></pre>
+      <pre><h3>{{post.executor}}</h3></pre>
     </div>
 
     <div *ngIf="post.address != ''" style="text-align: left">
