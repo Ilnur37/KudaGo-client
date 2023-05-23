@@ -1,40 +1,36 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../../models/User";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../service/user.service";
 import {NotificationService} from "../../../service/notification.service";
-import {PostConcert} from "../../../models/PostConcert";
-import {PostConcertService} from "../../../service/post-concert.service";
+import {PostTop} from "../../../models/PostTop";
+import {PostTopService} from "../../../service/post-top.service";
 
 @Component({
-  selector: 'app-concert-main',
-  templateUrl: './concert-main.component.html',
-  styleUrls: ['./concert-main.component.css']
+  selector: 'app-top-main',
+  templateUrl: './top-main.component.html',
+  styleUrls: ['./top-main.component.css']
 })
-export class ConcertMainComponent implements OnInit {
+export class TopMainComponent implements OnInit{
 
   isPostsLoaded = false;
-  posts: PostConcert[] | any;
+  posts: PostTop[] | any;
   isUserDataLoaded = false;
   user: User | any;
-  selected : string | any;
-  titleSearch : string = '';
 
   constructor(private route: ActivatedRoute,
-              private postService: PostConcertService,
+              private postService: PostTopService,
               private userService: UserService,
-              private notificationService: NotificationService
-  ) { }
+              private notificationService: NotificationService) {
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe((param: Params) => {
-      this.postService.getAllPosts(param['sorted'])
-        .subscribe(data => {
-          console.log(data);
-          this.posts = data;
-          this.isPostsLoaded = true;
-        })
-    })
+    this.postService.getAllPosts()
+      .subscribe(data => {
+        console.log(data);
+        this.posts = data;
+        this.isPostsLoaded = true;
+      })
 
     this.userService.getCurrentUser()
       .subscribe(data => {

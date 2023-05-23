@@ -11,11 +11,15 @@ import {FilmInfoComponent} from "./posts/films/film-info/film-info.component";
 import {StandUpInfoComponent} from "./posts/standups/standup-info/stand-up-info.component";
 import {ConcertMainComponent} from "./posts/concerts/concert-main/concert-main.component";
 import {ConcertInfoComponent} from "./posts/concerts/concert-info/concert-info.component";
+import {TopMainComponent} from "./posts/top/top-main/top-main.component";
+import {TopInfoComponent} from "./posts/top/top-info/top-info.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
+  {path: 'main', component: TopMainComponent, canActivate: [AuthGuardService]},
+  {path: 'top/info/:id', component: TopInfoComponent, canActivate: [AuthGuardService]},
+
   {path: 'film/:sorted', component: FilmMainComponent, canActivate: [AuthGuardService]},
   {path: 'film/info/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
 

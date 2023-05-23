@@ -27,3 +27,11 @@ img {
 .icon-display {
   transform: scale(1.2);
 }
+
+.is-liked {
+  color: darkorange;
+}
+
+.not-liked {
+  color: grey;
+}

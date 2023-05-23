@@ -26,6 +26,9 @@ import { StandUpEditComponent } from './posts/admin/stand-up-edit/stand-up-edit.
 import { ConcertMainComponent } from './posts/concerts/concert-main/concert-main.component';
 import { ConcertInfoComponent } from './posts/concerts/concert-info/concert-info.component';
 import { ConcertEditComponent } from './posts/admin/concert-edit/concert-edit.component';
+import { TopMainComponent } from './posts/top/top-main/top-main.component';
+import { TopInfoComponent } from './posts/top/top-info/top-info.component';
+import { TopEditComponent } from './posts/admin/top-edit/top-edit.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { ConcertEditComponent } from './posts/admin/concert-edit/concert-edit.co
     ConcertMainComponent,
     ConcertInfoComponent,
     ConcertEditComponent,
+    TopMainComponent,
+    TopInfoComponent,
+    TopEditComponent,
   ],
   imports: [
     BrowserModule,

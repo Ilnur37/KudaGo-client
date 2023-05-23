@@ -1,21 +1,7 @@
 .index-page {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   padding-top: 3rem;
-}
-
-.post-card {
-  display: block;
-  object-fit: cover;
-  width: 400px;
-  height: 350px;
-  margin: 20px;
-}
-
-img {
-  border-radius: 10px;
-  margin-left: 10px;
-  margin-top: 10px
 }
 
 .example-form {
@@ -26,6 +12,15 @@ img {
 
 .icon-display {
   transform: scale(1.2);
+}
+
+h1, h2 {
+  font-family: DemiBold;
+  font-size: 70px;
+}
+
+h5 {
+  font-family: Medium;
 }
 
 .is-liked {

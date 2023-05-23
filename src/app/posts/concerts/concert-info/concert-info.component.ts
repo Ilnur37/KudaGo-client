@@ -21,6 +21,7 @@ export class ConcertInfoComponent implements OnInit {
   isUserDataLoaded = false;
   user: User | any;
   isAdmin = false;
+  genres: string[] | any;
 
   constructor(private route: ActivatedRoute,
               private postService: PostConcertService,
@@ -39,6 +40,7 @@ export class ConcertInfoComponent implements OnInit {
           this.post = data;
           this.getCommentsToPosts(this.post);
           this.isPostLoaded = true;
+          this.genres = data.genre.split("-");
         })
     })
 

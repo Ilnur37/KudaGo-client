@@ -5,7 +5,6 @@
   </div>
 
   <div style="padding-top: 2rem;" class="row">
-
     <div>
       <h1 style="float: left; display: inline-block;">
         {{post.title}}
@@ -15,7 +14,7 @@
               (click)="likePost()"
               [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
         <mat-icon class="icon-display">favorite</mat-icon>
-        {{post.likes}}
+        {{post.usersLiked.length}}
       </button>
     </div>
 
@@ -23,65 +22,43 @@
       <img class="post-image2" [src]="(post.image)" alt="post image">
     </div>
 
-    <div class="col" style="text-align: left">
-      <h5>{{post.shortInfo}}</h5>
-      <h5 *ngIf="post.rating != ''">Рейтинг кинопоиска: {{post.rating}}</h5>
-
-      <mat-divider style="margin: 2rem 0"></mat-divider>
-
-      <div style="text-align: left">
-        <h1>О фильме</h1>
-        <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
-      </div>
-    </div>
-
-    <div class="col-4" style="text-align: left">
-      <h5>{{post.genre}}</h5>
-    </div>
-    <!--<div class="col-4" style="width: 330px">
-      <img class="post-image" [src]="(post.image)" alt="post image">
-    </div>
-
-    <div class="col" style="text-align: left; width: 400px">
-      <div>
-        <h1 style="display:inline-block;">
-          {{post.title}}
-        </h1>
-        <button style="float: right; display:inline-block; margin-right: 30px"
-                *ngIf="isUserDataLoaded" mat-button
-                (click)="likePost()"
-                [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
-          <mat-icon class="icon-display">favorite</mat-icon>
-          {{post.likes}}
-        </button>
-      </div>
-
-      <h5>{{post.genre}}</h5>
-      <h5>{{post.shortInfo}}</h5>
-      <h5 *ngIf="post.rating != ''">Рейтинг кинопоиска: {{post.rating}}</h5>
-    </div>
-
     <mat-divider style="margin: 2rem 0"></mat-divider>
 
-    <div style="text-align: left">
-      <h1>О фильме</h1>
-      <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
-    </div>-->
+    <div class="col-8" style="text-align: left">
+      <div *ngIf="post.info != ''" style="text-align: left">
+        <h1>О событии</h1>
+        <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
+      </div>
 
+      <div *ngIf="post.executor != ''" style="text-align: left">
+        <h1>Исполнитель</h1>
+        <h5>{{post.executor}}</h5>
+      </div>
+      <h5>{{post.shortInfo}}</h5>
+      <br>
+    </div>
 
-
+    <div class="col-4">
+      <br><br>
+      <div style="display: flex; flex-wrap: wrap">
+        <div style="margin: 10px" *ngFor="let genre of genres">
+          <h5 class="element2" style="text-align: center;">{{genre}}</h5>
+        </div>
+      </div>
+      <h2>Рейтинг кинопоиска: </h2>
+      <h4 *ngIf="post.rating != ''">{{post.rating}}</h4>
+    </div>
 
     <div style="text-align: left; margin-top: 100px">
       <h2>Отзывы</h2>
-
       <mat-form-field class="w-100">
         <mat-label>Оставить отзыв</mat-label>
         <input (keyup.enter)="postComment($event)" matInput #message maxlength="128">
-        <mat-hint align="end">{{message.value.length}} / 128</mat-hint>
       </mat-form-field>
 
-      <p *ngFor="let comment of post.comments"><span
-        style="font-weight: 500">{{comment.username}}</span>: {{comment.message}}</p>
+      <p *ngFor="let comment of post.comments">
+        <span style="font-weight: 500">{{comment.username}}</span>: {{comment.message}}
+      </p>
     </div>
 
     <mat-divider style="margin: 2rem 0"></mat-divider>

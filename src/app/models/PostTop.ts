@@ -1,11 +1,12 @@
 import {CommentFilm} from "./CommentFilm";
 
-export interface PostConcert {
+export interface PostTop {
   id?: number;
   title: string;
   titleInfo: string;
   info: string;
   shortInfo: string;
+  rating?: string;
   genre?: string;
   executor?: string;
   address?: string;

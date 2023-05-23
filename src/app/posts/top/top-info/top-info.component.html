@@ -26,7 +26,7 @@
 
     <div class="col-8" style="text-align: left">
       <div *ngIf="post.info != ''" style="text-align: left">
-        <h1>О концерте</h1>
+        <h1>О событии</h1>
         <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
       </div>
 
@@ -35,6 +35,9 @@
         <h5>{{post.executor}}</h5>
       </div>
       <h5>{{post.shortInfo}}</h5>
+      <br>
+      <h2 style="display: inline" *ngIf="post.rating != ''">Рейтинг кинопоиска: </h2>
+      <h5 style="display: inline" *ngIf="post.rating != ''">{{post.rating}}</h5>
     </div>
 
     <div class="col-4">

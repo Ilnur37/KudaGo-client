@@ -1,0 +1,58 @@
+<div *ngIf="isPostsLoaded && isUserDataLoaded">
+
+  <div>
+    <div style="position: absolute; padding-left: 35%; padding-top: 250px">
+      <h1 style="color: darkorange; display: inline">Медиа </h1>
+      <h1 style="color: aliceblue; display: inline">платформа </h1>
+    </div>
+    <h1 style="position: absolute; padding-left: 17%; padding-top: 340px; color: aliceblue; display: inline">
+      о развлечениях и культурном досуге
+    </h1>
+    <div style="position: absolute; padding-left: 37%; padding-top: 430px;">
+      <h1 style="color: aliceblue; display: inline">досуге </h1>
+      <h1 style="color: darkorange; display: inline">молодежи</h1>
+    </div>
+
+    <img src="../../../../assets/image/fon 1.png" style="width: 100%"/>
+  </div>
+
+  <img src="../../../../assets/image/top-10.png" style="margin-bottom: 100px; width: 100%"/>
+
+  <div class="container; index-page">
+    <div class="row" *ngFor="let post of posts; let i = index">
+      <div class="col-3" style="text-align: left; padding-top: 10px">
+        <pre><h5>{{post.titleInfo}}</h5></pre>
+      </div>
+      <div class="col-3">
+        <img style="border-radius: 10px" [src]="(post.mainImage)" alt="post image">
+      </div>
+      <div class="col-4">
+        <h4>{{post.title}}</h4>
+        <h5>{{post.address}}</h5>
+      </div>
+      <div class="col-2">
+        <div style="display:inline-block;">
+          <button mat-flat-button color="primary" [routerLink]="['/top/info', post.id]">Перейти</button>
+        </div>
+        <div style="display:inline-block;">
+          <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+            <mat-icon class="icon-display">favorite</mat-icon>{{post.usersLiked.length}}</button>
+        </div>
+      </div>
+
+      <!--<mat-card-content style="margin-top: -40px">
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title style="margin-top: -5px" [routerLink]="['/top/info', post.id]">{{post.title}}</mat-card-title>
+        <p>{{post.titleInfo}}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+          <mat-icon class="icon-display">favorite</mat-icon>{{post.usersLiked.length}}</button>
+      </mat-card-actions>-->
+
+      <mat-divider style="margin: 2rem 0"></mat-divider>
+
+    </div>
+  </div>
+</div>

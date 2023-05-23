@@ -1,32 +1,32 @@
 import {Component, OnInit} from '@angular/core';
-import {PostFilm} from "../../../models/PostFilm";
 import {User} from "../../../models/User";
-import {PostFilmService} from "../../../service/post-film.service";
-import {UserService} from "../../../service/user.service";
-import {CommentFilmService} from "../../../service/comment-film.service";
-import {NotificationService} from "../../../service/notification.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {UserService} from "../../../service/user.service";
+import {NotificationService} from "../../../service/notification.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {FilmEditComponent} from "../../admin/film-edit/film-edit.component";
+import {PostTopService} from "../../../service/post-top.service";
+import {PostTop} from "../../../models/PostTop";
+import {TopEditComponent} from "../../admin/top-edit/top-edit.component";
+import {CommentTopService} from "../../../service/comment-top.service";
 
 @Component({
-  selector: 'app-film-info',
-  templateUrl: './film-info.component.html',
-  styleUrls: ['./film-info.component.css']
+  selector: 'app-top-info',
+  templateUrl: './top-info.component.html',
+  styleUrls: ['./top-info.component.css']
 })
-export class FilmInfoComponent implements OnInit {
+export class TopInfoComponent implements OnInit {
 
   isPostLoaded = false;
-  post: PostFilm | any;
+  post: PostTop | any;
   isUserDataLoaded = false;
   user: User | any;
   isAdmin = false;
   genres: string[] | any;
 
   constructor(private route: ActivatedRoute,
-              private postService: PostFilmService,
+              private postService: PostTopService,
               private userService: UserService,
-              private commentService: CommentFilmService,
+              private commentService: CommentTopService,
               private notificationService: NotificationService,
               private dialog: MatDialog) {
   }
@@ -55,11 +55,11 @@ export class FilmInfoComponent implements OnInit {
       })
   }
 
-  getCommentsToPosts(post: PostFilm): void {
+  getCommentsToPosts(post: PostTop): void {
     this.commentService.getCommentsToPost(post.id)
-        .subscribe(data => {
-          post.comments = data
-        });
+      .subscribe(data => {
+        post.comments = data
+      });
   }
 
   likePost(): void {
@@ -87,7 +87,6 @@ export class FilmInfoComponent implements OnInit {
     console.log(target.value);
     let message = target.value;
 
-    console.log(this.post);
     this.commentService.addToCommentToPost(this.post.id, message)
       .subscribe(data => {
         console.log(data);
@@ -101,6 +100,7 @@ export class FilmInfoComponent implements OnInit {
     dialogPostEditConfig.data = {
       post: this.post
     };
-    this.dialog.open(FilmEditComponent, dialogPostEditConfig);
+    this.dialog.open(TopEditComponent, dialogPostEditConfig);
   }
+
 }
