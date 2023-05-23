@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
-import {IndexComponent} from "./layout/index/index.component";
 import {AuthGuardService} from "./helper/auth-guard.service";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {StandUpMainComponent} from "./posts/standups/standup-main/stand-up-main.component";
@@ -13,6 +12,8 @@ import {ConcertMainComponent} from "./posts/concerts/concert-main/concert-main.c
 import {ConcertInfoComponent} from "./posts/concerts/concert-info/concert-info.component";
 import {TopMainComponent} from "./posts/top/top-main/top-main.component";
 import {TopInfoComponent} from "./posts/top/top-info/top-info.component";
+import {TheaterMainComponent} from "./posts/theaters/theater-main/theater-main.component";
+import {TheaterInfoComponent} from "./posts/theaters/theater-info/theater-info.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -38,6 +39,9 @@ const routes: Routes = [
 
   {path: 'concert/:sorted', component: ConcertMainComponent, canActivate: [AuthGuardService]},
   {path: 'concert/info/:id', component: ConcertInfoComponent, canActivate: [AuthGuardService]},
+
+  {path: 'theater/:sorted', component: TheaterMainComponent, canActivate: [AuthGuardService]},
+  {path: 'theater/info/:id', component: TheaterInfoComponent, canActivate: [AuthGuardService]},
 
 
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},

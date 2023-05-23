@@ -25,13 +25,19 @@
     <mat-divider style="margin: 2rem 0"></mat-divider>
 
     <div class="col-8" style="text-align: left">
-      <h5>{{post.shortInfo}}</h5>
-      <br>
       <div *ngIf="post.info != ''" style="text-align: left">
-        <h1>О фильме</h1>
+        <h1>О событии</h1>
         <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
       </div>
+
+      <div *ngIf="post.executor != ''" style="text-align: left">
+        <h1>Исполнитель</h1>
+        <h5>{{post.executor}}</h5>
+      </div>
+      <h5>{{post.shortInfo}}</h5>
       <br>
+      <h2 style="display: inline" *ngIf="post.rating != null">Рейтинг кинопоиска: </h2>
+      <h5 style="display: inline" *ngIf="post.rating != null">{{post.rating}}</h5>
     </div>
 
     <div class="col-4">
@@ -41,8 +47,22 @@
           <h5 class="element2" style="text-align: center;">{{genre}}</h5>
         </div>
       </div>
-      <h2>Рейтинг кинопоиска: </h2>
-      <h4 *ngIf="post.rating != ''">{{post.rating}}</h4>
+
+      <div *ngIf="post.address != '\n\n'" style="text-align: left">
+        <div style="position: absolute; margin-left: 20px">
+          <h2 style="color: aliceblue">Адрес</h2>
+          <pre><h5 style="color: aliceblue; white-space: pre-line">{{post.address}}</h5></pre>
+        </div>
+        <img src="../../../../assets/image/rectangle129436-owk-200h.png" height="170" width="350"/>
+      </div>
+      <br>
+      <div *ngIf="post.metro != ''" style="text-align: left">
+        <div style="position: absolute; margin-left: 20px">
+          <h2 style="color: aliceblue">Метро</h2>
+          <pre><h5 style="color: aliceblue">{{post.metro}}</h5></pre>
+        </div>
+        <img src="../../../../assets/image/rectangle129436-owk-200h.png" height="110" width="350"/>
+      </div>
     </div>
 
     <div style="text-align: left; margin-top: 100px">
