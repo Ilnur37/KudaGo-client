@@ -15,6 +15,22 @@
   margin-bottom: 2rem;
 }
 
+.post-image2 {
+  width: 100%;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.element2 {
+  width: 160px;
+  height: 40px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
 .icon-display {
   transform: scale(1.5);
 }
@@ -25,4 +41,12 @@ h1, h2 {
 
 h5 {
   font-family: Medium;
+}
+
+.is-liked {
+  color: darkorange;
+}
+
+.not-liked {
+  color: grey;
 }

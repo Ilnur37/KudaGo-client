@@ -8,6 +8,12 @@
     </mat-form-field>
 
     <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Инфомация на карточке</mat-label>
+      <input matInput
+             formControlName="titleInfo">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
       <mat-label>Полная информация</mat-label>
       <textarea style="height: 150px" matInput
                 formControlName="info"></textarea>
@@ -38,9 +44,21 @@
     </mat-form-field>
 
     <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Метро</mat-label>
+      <input matInput
+             formControlName="metro">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
       <mat-label>Фото</mat-label>
       <input matInput
              formControlName="image">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Фото главной страницы</mat-label>
+      <input matInput
+             formControlName="mainImage">
     </mat-form-field>
 
     <div class="row">

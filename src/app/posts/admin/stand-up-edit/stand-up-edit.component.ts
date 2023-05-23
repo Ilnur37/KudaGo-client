@@ -32,6 +32,10 @@ export class StandUpEditComponent implements OnInit {
         this.data.post.title,
         Validators.compose([Validators.required])
       ],
+      titleInfo : [
+        this.data.post.titleInfo,
+        Validators.compose([Validators.required])
+      ],
       info: [
         this.data.post.info,
         Validators.compose([Validators.required])
@@ -52,8 +56,16 @@ export class StandUpEditComponent implements OnInit {
         this.data.post.address,
         Validators.compose(null)
       ],
+      metro : [
+        this.data.post.metro,
+        Validators.compose(null)
+      ],
       image : [
         this.data.post.image,
+        Validators.compose([Validators.required])
+      ],
+      mainImage : [
+        this.data.post.mainImage,
         Validators.compose([Validators.required])
       ]
     });
@@ -83,6 +95,7 @@ export class StandUpEditComponent implements OnInit {
     this.data.post.executor = this.postEditForm.value.executor;
     this.data.post.address = this.postEditForm.value.address;
     this.data.post.image = this.postEditForm.value.image;
+    this.data.post.mainImage = this.postEditForm.value.mainImage;
     return this.data.post;
   }
 

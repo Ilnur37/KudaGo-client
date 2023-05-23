@@ -1,7 +1,7 @@
 .post-profile {
   display: block;
   margin: 0 auto;
-  width: 60%;
+  width: 65%;
   text-align: center;
   padding-top: 3rem;
 }
@@ -13,6 +13,15 @@
   margin-left: 0;
   margin-right: auto;
   margin-bottom: 2rem;
+}
+
+.post-image2 {
+  width: 100%;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .icon-display {

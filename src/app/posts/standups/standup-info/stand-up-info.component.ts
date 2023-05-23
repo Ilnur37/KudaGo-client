@@ -7,8 +7,6 @@ import {NotificationService} from "../../../service/notification.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostStandUpService} from "../../../service/post-standup.service";
 import {CommentStandUpService} from "../../../service/comment-stand-up.service";
-import {PostFilm} from "../../../models/PostFilm";
-import {FilmEditComponent} from "../../admin/film-edit/film-edit.component";
 import {StandUpEditComponent} from "../../admin/stand-up-edit/stand-up-edit.component";
 
 @Component({
@@ -23,6 +21,7 @@ export class StandUpInfoComponent implements OnInit {
   isUserDataLoaded = false;
   user: User | any;
   isAdmin = false;
+  genres: string[] | any;
 
   constructor(private route: ActivatedRoute,
               private postService: PostStandUpService,
@@ -41,6 +40,7 @@ export class StandUpInfoComponent implements OnInit {
           this.post = data;
           this.getCommentsToPosts(this.post);
           this.isPostLoaded = true;
+          this.genres = data.genre.split("-");
         })
     })
 
@@ -55,7 +55,7 @@ export class StandUpInfoComponent implements OnInit {
       })
   }
 
-  getCommentsToPosts(post: PostFilm): void {
+  getCommentsToPosts(post: PostStandUp): void {
     this.commentService.getCommentsToPost(post.id)
       .subscribe(data => {
         post.comments = data
@@ -87,7 +87,6 @@ export class StandUpInfoComponent implements OnInit {
     console.log(target.value);
     let message = target.value;
 
-    console.log(this.post);
     this.commentService.addToCommentToPost(this.post.id, message)
       .subscribe(data => {
         console.log(data);
