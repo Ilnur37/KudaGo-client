@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'main', component: TopMainComponent, canActivate: [AuthGuardService]},
   {path: 'top/info/:id', component: TopInfoComponent, canActivate: [AuthGuardService]},
 
-  {path: 'film/:sorted', component: FilmMainComponent, canActivate: [AuthGuardService]},
+  {path: 'film/:sortLike/:sortGenre', component: FilmMainComponent, canActivate: [AuthGuardService]},
   {path: 'film/info/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
 
   /*{

@@ -1,6 +1,8 @@
 .spacer {
   flex: 1 1 auto;
   font-family: DemiBold;
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 #menu-item button {

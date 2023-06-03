@@ -17,7 +17,8 @@ export class FilmMainComponent implements OnInit {
   posts: PostFilm[] | any;
   isUserDataLoaded = false;
   user: User | any;
-  selected : string | any;
+  selectedByLikes : string = 'default';
+  selectedByGenre : string = 'default';
   titleSearch : string = '';
 
   constructor(private route: ActivatedRoute,
@@ -28,9 +29,9 @@ export class FilmMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param: Params) => {
-      this.postService.getAllPosts(param['sorted'])
+      this.postService.getAllPosts(param['sortLike'], param['sortGenre'])
         .subscribe(data => {
-          console.log(data);
+          console.log('data', data);
           this.posts = data;
           this.isPostsLoaded = true;
       })
@@ -63,9 +64,5 @@ export class FilmMainComponent implements OnInit {
           }
         });
     }
-  }
-
-  clearFields() {
-    this.selected = "default"
   }
 }

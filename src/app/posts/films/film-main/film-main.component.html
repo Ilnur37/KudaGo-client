@@ -1,28 +1,54 @@
 <div *ngIf="isPostsLoaded && isUserDataLoaded" class="index-page">
 
-  <div style="display:inline-block; margin-right: 30px">
+  <div class="search">
     <mat-form-field class="example-full-width">
       <mat-label>Поиск</mat-label>
       <input matInput placeholder="" type="text" [(ngModel)]="titleSearch">
     </mat-form-field>
   </div>
-  <div style="display:inline-block; margin-right: 30px">
+
+  <div class="search">
     <mat-form-field appearance="fill">
       <mat-label>По популярности</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option>None</mat-option>
+      <mat-select [(value)]="selectedByLikes">
+        <mat-option value="default">По умолчанию</mat-option>
         <mat-option value="asc">По возрастанию</mat-option>
         <mat-option value="desc">По убыванию</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
-  <div style="display:inline-block; margin-right: 30px; float: right">
-    <button mat-flat-button color="primary" [routerLink]="['/film/', selected]">Применить</button>
+  <div class="search">
+    <mat-form-field appearance="fill">
+      <mat-label>Жанр</mat-label>
+      <mat-select [(value)]="selectedByGenre">
+        <mat-option value="default">Все жанры</mat-option>
+        <mat-option value="g1">Авторское кино</mat-option>
+        <mat-option value="g2">Боевик</mat-option>
+        <mat-option value="g3">Детектив</mat-option>
+        <mat-option value="g4">Драма</mat-option>
+        <mat-option value="g5">Комедия</mat-option>
+        <mat-option value="g6">Мелодрама</mat-option>
+        <mat-option value="g7">Мультфильм</mat-option>
+        <mat-option value="g8">Приключения</mat-option>
+        <mat-option value="g9">Семейное кино</mat-option>
+        <mat-option value="g10">Трагикомедия</mat-option>
+        <mat-option value="g11">Триллер</mat-option>
+        <mat-option value="g12">Ужасы</mat-option>
+        <mat-option value="g13">Фантастика</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
-  <div style="display:inline-block; margin-right: 30px; float: right">
-    <button mat-stroked-button color="primary" (click)="selected = 'default'; titleSearch = ''">Очистить поля</button>
+  <div class="search-right">
+    <button mat-flat-button color="primary" [routerLink]="['/film/', selectedByLikes, selectedByGenre]">Применить</button>
+  </div>
+
+  <div class="search-right">
+    <button mat-stroked-button color="primary"
+            (click)="selectedByLikes = 'default';
+            selectedByGenre = 'default';
+            titleSearch = '';">Очистить поля</button>
   </div>
 
   <div style="display: flex; flex-wrap: wrap">

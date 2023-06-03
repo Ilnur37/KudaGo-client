@@ -25,7 +25,7 @@ export class IndexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.postService.getAllPosts('default')
+    this.postService.getAllPosts('default', 'default')
       .subscribe(data => {
         console.log(data);
         this.posts = data;
