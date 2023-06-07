@@ -17,9 +17,9 @@ export class PostConcertService {
     return this.http.post(POST_API + 'create', post);
   }
 
-  getAllPosts(sorted: string): Observable<any> {
+  getAllPosts(sortLike: string, sortGenre: string): Observable<any> {
     // @ts-ignore
-    return this.http.get(POST_API + 'all/' + sorted, sorted);
+    return this.http.get(POST_API + 'all/' + sortLike + '/' + sortGenre, sortLike, sortGenre);
   }
 
   getFullInfo(id: number): Observable<any> {

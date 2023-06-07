@@ -8,10 +8,10 @@ export interface PostFilm {
   genre?: string;
   cinema?: string;
   image?: string;
-  backgroundImg?: string
+  mainImage?: string
   likes?: number;
   rating?: string;
   usersLiked: string[];
   comments?: CommentFilm [];
+  referenceInfo: string;
 }
-

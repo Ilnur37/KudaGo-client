@@ -8,10 +8,40 @@
 
 .profile-image {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
+}
+
+img {
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 10px
+}
+
+.post-card {
+  display: block;
+  object-fit: cover;
+  width: 400px;
+  height: 350px;
+  margin: 20px;
+}
+
+h1, h2 {
+  font-family: DemiBold;
+}
+
+h5 {
+  font-family: Medium;
+}
+
+.is-liked {
+  color: darkorange;
+}
+
+.not-liked {
+  color: grey;
 }

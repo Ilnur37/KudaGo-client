@@ -53,15 +53,15 @@
 
   <div style="display: flex; flex-wrap: wrap">
     <mat-card class="post-card" *ngFor="let post of posts | filter:titleSearch; let i = index">
-      <img mat-card-image [src]="(post.backgroundImg)" alt="post image">
+      <img mat-card-image [src]="(post.mainImage)" alt="post image">
       <mat-card-content style="margin-top: -40px">
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title style="font-family: DemiBold; margin-top: -5px" [routerLink]="['/film/info', post.id]">{{post.title}}</mat-card-title>
+        <mat-card-title style="font-family: DemiBold; margin-top: -5px" [routerLink]="[post.referenceInfo, post.id]">{{post.title}}</mat-card-title>
         <p>{{post.cinema}}</p>
       </mat-card-content>
 
       <mat-card-actions>
-        <button [value]="post.likes" *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id, i)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+        <button [value]="post.likes" *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
           <mat-icon class="icon-display">favorite</mat-icon>{{post.usersLiked.length}}</button>
       </mat-card-actions>
 

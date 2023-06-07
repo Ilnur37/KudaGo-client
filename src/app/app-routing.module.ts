@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'top/info/:id', component: TopInfoComponent, canActivate: [AuthGuardService]},
 
   {path: 'film/:sortLike/:sortGenre', component: FilmMainComponent, canActivate: [AuthGuardService]},
-  {path: 'film/info/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
+  {path: 'film/:id', component: FilmInfoComponent, canActivate: [AuthGuardService]},
 
   /*{
     path: 'film',
@@ -37,8 +37,8 @@ const routes: Routes = [
   {path: 'standUp/:sorted', component: StandUpMainComponent, canActivate: [AuthGuardService]},
   {path: 'standUp/info/:id', component: StandUpInfoComponent, canActivate: [AuthGuardService]},
 
-  {path: 'concert/:sorted', component: ConcertMainComponent, canActivate: [AuthGuardService]},
-  {path: 'concert/info/:id', component: ConcertInfoComponent, canActivate: [AuthGuardService]},
+  {path: 'concert/:sortLike/:sortGenre', component: ConcertMainComponent, canActivate: [AuthGuardService]},
+  {path: 'concert/:id', component: ConcertInfoComponent, canActivate: [AuthGuardService]},
 
   {path: 'theater/:sorted', component: TheaterMainComponent, canActivate: [AuthGuardService]},
   {path: 'theater/info/:id', component: TheaterInfoComponent, canActivate: [AuthGuardService]},

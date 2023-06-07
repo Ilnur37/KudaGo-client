@@ -5,6 +5,7 @@ import {UserService} from "../../../service/user.service";
 import {NotificationService} from "../../../service/notification.service";
 import {PostConcert} from "../../../models/PostConcert";
 import {PostConcertService} from "../../../service/post-concert.service";
+import {PostFilm} from "../../../models/PostFilm";
 
 @Component({
   selector: 'app-concert-main',
@@ -17,7 +18,8 @@ export class ConcertMainComponent implements OnInit {
   posts: PostConcert[] | any;
   isUserDataLoaded = false;
   user: User | any;
-  selected : string | any;
+  selectedByLikes : string = 'default';
+  selectedByGenre : string = 'default';
   titleSearch : string = '';
 
   constructor(private route: ActivatedRoute,
@@ -28,9 +30,9 @@ export class ConcertMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param: Params) => {
-      this.postService.getAllPosts(param['sorted'])
+      this.postService.getAllPosts(param['sortLike'], param['sortGenre'])
         .subscribe(data => {
-          console.log(data);
+          console.log('data', data);
           this.posts = data;
           this.isPostsLoaded = true;
         })
@@ -44,10 +46,16 @@ export class ConcertMainComponent implements OnInit {
       })
   }
 
-  likePost(postId: number, postIndex: number): void {
-    const post = this.posts[postIndex];
+  likePost(postId: number): void {
+    let post: PostConcert;
+
+    this.posts.forEach((p : PostConcert) => {
+      if (p.id == postId) post = p;
+    })
+    // @ts-ignore
     console.log(post);
 
+    // @ts-ignore
     if (!post.usersLiked.includes(this.user.username)) {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {

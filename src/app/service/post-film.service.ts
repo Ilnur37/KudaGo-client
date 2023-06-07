@@ -24,7 +24,7 @@ export class PostFilmService {
 
   getFullInfo(id: number): Observable<any> {
     // @ts-ignore
-    return this.http.get(POST_API + 'info/' + id, id);
+    return this.http.get(POST_API + id, id);
   }
 
   updatePost(post: any): Observable<any> {
@@ -35,7 +35,7 @@ export class PostFilmService {
     return this.http.post(POST_API + id + '/delete', null);
   }
 
-  likePost(id: number, username: string): Observable<any> {
+    likePost(id: number, username: number): Observable<any> {
     return this.http.post(POST_API + id + '/' + username + '/like', null);
   }
 }

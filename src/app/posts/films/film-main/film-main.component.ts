@@ -45,10 +45,16 @@ export class FilmMainComponent implements OnInit {
       })
   }
 
-  likePost(postId: number, postIndex: number): void {
-    const post = this.posts[postIndex];
+  likePost(postId: number): void {
+    let post: PostFilm;
+
+    this.posts.forEach((p : PostFilm) => {
+      if (p.id == postId) post = p;
+    })
+    // @ts-ignore
     console.log(post);
 
+    // @ts-ignore
     if (!post.usersLiked.includes(this.user.username)) {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {

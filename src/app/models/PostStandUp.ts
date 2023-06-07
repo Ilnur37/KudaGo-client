@@ -15,4 +15,5 @@ export interface PostStandUp {
   likes?: number;
   usersLiked: string[];
   comments?: CommentStandUp [];
+  referenceInfo: string;
 }

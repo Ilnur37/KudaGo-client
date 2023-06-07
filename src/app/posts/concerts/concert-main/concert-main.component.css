@@ -12,6 +12,17 @@
   margin: 20px;
 }
 
+.search {
+  display:inline-block;
+  margin-right: 30px;
+}
+
+.search-right {
+  display:inline-block;
+  margin-right: 30px;
+  float: right;
+}
+
 img {
   border-radius: 10px;
   margin-left: 10px;

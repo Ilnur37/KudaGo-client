@@ -5,6 +5,7 @@ import {NotificationService} from "../../../service/notification.service";
 import {PostStandUp} from "../../../models/PostStandUp";
 import {ActivatedRoute, Params} from "@angular/router";
 import {PostStandUpService} from "../../../service/post-standup.service";
+import {PostFilm} from "../../../models/PostFilm";
 
 @Component({
   selector: 'app-standup-main',
@@ -44,10 +45,16 @@ export class StandUpMainComponent implements OnInit{
       })
   }
 
-  likePost(postId: number, postIndex: number): void {
-    const post = this.posts[postIndex];
+  likePost(postId: number): void {
+    let post: PostStandUp;
+
+    this.posts.forEach((p : PostStandUp) => {
+      if (p.id == postId) post = p;
+    })
+    // @ts-ignore
     console.log(post);
 
+    // @ts-ignore
     if (!post.usersLiked.includes(this.user.username)) {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {

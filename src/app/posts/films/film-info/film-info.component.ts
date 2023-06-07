@@ -67,13 +67,13 @@ export class FilmInfoComponent implements OnInit {
 
     if (!this.post.usersLiked.includes(this.user.username)) {
       this.postService.likePost(this.post.id, this.user.username)
-        .subscribe(() => {
+          .subscribe(() => {
           this.post.usersLiked.push(this.user.username);
           this.notificationService.showSnackBar('Liked!');
         });
     } else {
       this.postService.likePost(this.post.id, this.user.username)
-        .subscribe(() => {
+          .subscribe(() => {
           const index = this.post.usersLiked.indexOf(this.user.username, 0);
           if (index > -1) {
             this.post.usersLiked.splice(index, 1);

@@ -15,4 +15,5 @@ export interface PostConcert {
   likes?: number;
   usersLiked: string[];
   comments?: CommentFilm [];
+  referenceInfo: string;
 }

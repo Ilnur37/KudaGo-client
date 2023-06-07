@@ -19,6 +19,10 @@ export class UserService {
     return this.http.get(USER_API);
   }
 
+  getFavouritePosts(): Observable<any> {
+    return this.http.get(USER_API  + 'favourite');
+  }
+
   updateUser(user: any): Observable<any> {
     return this.http.post(USER_API + 'update', user);
   }
