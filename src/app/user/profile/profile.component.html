@@ -28,17 +28,78 @@
     <mat-divider style="margin: 2rem 0"></mat-divider>
 
     <div style="display: flex; flex-wrap: wrap; text-align: left">
-      <mat-card class="post-card" *ngFor="let post of favourite; let i = index">
-        <img mat-card-image [src]="(post.mainImage)" alt="post image">
+      <mat-card class="post-card" *ngFor="let postFav of favourite">
+        <img mat-card-image [src]="(postFav.mainImage)" alt="post image">
         <mat-card-content style="margin-top: -40px">
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title style="margin-top: -5px" [routerLink]="[post.referenceInfo, post.id]">{{post.title}}</mat-card-title>
-          <p>{{post.titleInfo}}</p>
+          <mat-card-title style="margin-top: -5px" [routerLink]="[postFav.referenceInfo, postFav.id]">{{postFav.title}}</mat-card-title>
+          <p>{{postFav.titleInfo}}</p>
         </mat-card-content>
 
         <mat-card-actions>
-          <button mat-button (click)="likePost(post.id)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
-            <mat-icon class="icon-display">favorite</mat-icon>{{post.usersLiked.length}}</button>
+          <button mat-button (click)="likePost(postFav.id)" [ngClass]="postFav.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+            <mat-icon class="icon-display">favorite</mat-icon>{{postFav.usersLiked.length}}</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </div>
+
+    <mat-divider style="margin: 3rem 0"></mat-divider>
+
+    <h1>Может быть интересно</h1>
+    <h2 style="text-align: left;">Фильмы</h2>
+    <div style="display: flex; flex-wrap: wrap; text-align: left">
+      <mat-card class="post-card" *ngFor="let postF of recFilm; let i = index">
+        <img mat-card-image [src]="(postF.mainImage)" alt="post image">
+        <mat-card-content style="margin-top: -40px">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title style="margin-top: -5px" [routerLink]="[postF.referenceInfo, postF.id]">{{postF.title}}</mat-card-title>
+          <p>{{postF.titleInfo}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button (click)="likePost(postF.id)" [ngClass]="postF.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+            <mat-icon class="icon-display">favorite</mat-icon>{{postF.usersLiked.length}}</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </div>
+
+    <mat-divider style="margin: 1rem 0"></mat-divider>
+
+    <h2 style="text-align: left;">Стендап</h2>
+    <div style="display: flex; flex-wrap: wrap; text-align: left">
+      <mat-card class="post-card" *ngFor="let postS of recStandUp; let i = index">
+        <img mat-card-image [src]="(postS.mainImage)" alt="post image">
+        <mat-card-content style="margin-top: -40px">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title style="margin-top: -5px" [routerLink]="[postS.referenceInfo, postS.id]">{{postS.title}}</mat-card-title>
+          <p>{{postS.titleInfo}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button (click)="likePost(postS.id)" [ngClass]="postS.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+            <mat-icon class="icon-display">favorite</mat-icon>{{postS.usersLiked.length}}</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </div>
+
+    <mat-divider style="margin: 1rem 0"></mat-divider>
+
+    <h2 style="text-align: left;">Концерты</h2>
+    <div style="display: flex; flex-wrap: wrap; text-align: left">
+      <mat-card class="post-card" *ngFor="let postC of recConcert; let i = index">
+        <img mat-card-image [src]="(postC.mainImage)" alt="post image">
+        <mat-card-content style="margin-top: -40px">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title style="margin-top: -5px" [routerLink]="[postC.referenceInfo, postC.id]">{{postC.title}}</mat-card-title>
+          <p>{{postC.titleInfo}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button (click)="likePost(postC.id)" [ngClass]="postC.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+            <mat-icon class="icon-display">favorite</mat-icon>{{postC.usersLiked.length}}</button>
         </mat-card-actions>
 
       </mat-card>

@@ -29,6 +29,10 @@ export class ProfileComponent implements OnInit {
   avatar: File | any;
   previewImgURL: any;
   favourite : any[] | any;
+  recommendations : any[] | any;
+  recFilm : any[] | any;
+  recStandUp : any[] | any;
+  recConcert : any[] | any;
 
   constructor(private tokenService: TokenStorageService,
               public postFilmService: PostFilmService,
@@ -56,6 +60,15 @@ export class ProfileComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.favourite = data;
+      });
+
+    this.userService.getRecommendationsPosts()
+      .subscribe(data => {
+        console.log(data);
+        this.recommendations = data;
+        this.recFilm = [this.recommendations[0], this.recommendations[1], this.recommendations[2]];
+        this.recStandUp = [this.recommendations[3], this.recommendations[4], this.recommendations[5]];
+        this.recConcert = [this.recommendations[6], this.recommendations[7], this.recommendations[8]];
       });
   }
 
@@ -99,6 +112,9 @@ export class ProfileComponent implements OnInit {
     let post: any;
 
     this.favourite.forEach((p : any) => {
+      if (p.id == postId) post = p;
+    })
+    this.recommendations.forEach((p : any) => {
       if (p.id == postId) post = p;
     })
     // @ts-ignore

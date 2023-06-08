@@ -23,6 +23,10 @@ export class UserService {
     return this.http.get(USER_API  + 'favourite');
   }
 
+  getRecommendationsPosts(): Observable<any> {
+    return this.http.get(USER_API  + 'recommendations');
+  }
+
   updateUser(user: any): Observable<any> {
     return this.http.post(USER_API + 'update', user);
   }
