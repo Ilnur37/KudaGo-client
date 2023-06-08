@@ -102,5 +102,4 @@ export class StandUpInfoComponent implements OnInit {
     };
     this.dialog.open(StandUpEditComponent, dialogPostEditConfig);
   }
-
 }

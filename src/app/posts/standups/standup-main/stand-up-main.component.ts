@@ -5,7 +5,6 @@ import {NotificationService} from "../../../service/notification.service";
 import {PostStandUp} from "../../../models/PostStandUp";
 import {ActivatedRoute, Params} from "@angular/router";
 import {PostStandUpService} from "../../../service/post-standup.service";
-import {PostFilm} from "../../../models/PostFilm";
 
 @Component({
   selector: 'app-standup-main',
