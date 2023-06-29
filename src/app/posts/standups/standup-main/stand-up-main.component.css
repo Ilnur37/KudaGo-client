@@ -1,7 +1,18 @@
 .index-page {
+}
+
+.filter-container {
   margin: 0 auto;
   width: 80%;
   padding-top: 3rem;
+}
+.card-container {
+  margin: 0 auto;
+  width: 80%;
+  padding-top: 3rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
 }
 
 .post-card {
@@ -9,13 +20,20 @@
   object-fit: cover;
   width: 400px;
   height: 350px;
-  margin: 20px;
+  margin-left: 40px;
+  margin-top: 40px;
+  box-shadow: none;
+  background-color: #ffffff;
+  border-radius: 8px;
 }
 
 img {
-  border-radius: 10px;
+  border-radius: 8px !important;
   margin-left: 10px;
-  margin-top: 10px
+  margin-top: 10px;
+  max-width: 100%;
+  max-height: 100%;
+
 }
 
 .example-form {
@@ -24,14 +42,89 @@ img {
   width: 100%;
 }
 
-.icon-display {
-  transform: scale(1.2);
+.like-container {
+  position: absolute;
+  top: 26px;
+  right: 37px;
+  z-index: 1;
 }
 
 .is-liked {
-  color: darkorange;
+  color: #f0f0f0;
+  background-color: #f87806;
+  border-radius: 9px;
+  font-size: 14px;
+  height: 33px;
+  width: 10px;
+}
+
+.is-liked .icon-display, .is-liked span {
+  transform: scale(1);
+  color: #f0f0f0;
 }
 
 .not-liked {
-  color: grey;
+  color: #0f0f0f;
+  background-color: #f0f0f0;
+  border-radius: 9px;
+  font-size: 14px;
+  height: 33px;
 }
+
+.not-liked .icon-display, .not-liked span {
+  transform: scale(1);
+  color: #0f0f0f;
+}
+
+.like-count {
+  margin-left: -3px;
+}
+
+@media (min-width: 1024px) {
+  .index-page .post-card {
+    width: calc(33.33% - 40px); /* 3 карточки в ряд, с отступами между ними */
+  }
+}
+
+@media (max-width: 1023px) {
+  .index-page .post-card {
+    width: calc(50% - 40px); /* 2 карточки в ряд, с отступами между ними */
+  }
+  .like-container {
+    top: 25px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 767px) {
+  .index-page .post-card {
+    width: 100%; /* 1 карточка на всю ширину экрана */
+    margin: 0 auto;
+  }
+  .like-container {
+    top: 26px;
+    right: 55px;
+  }
+  .filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .filter-container > div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .filter-container mat-form-field {
+    width: 100%;
+    margin-bottom: -10px;
+  }
+  .filter-container button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .card-container {
+    justify-content: center;
+  }
+}
+
+

@@ -1,5 +1,5 @@
 <div class="edit-post">
-  <h2>Edit User Profile</h2>
+  <h2 style="margin-bottom: 40px; margin-top: 40px; color: #0f0f0f">Изменить пост</h2>
   <form [formGroup]="postEditForm" class="form-horizontal">
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>Название</mat-label>
@@ -50,14 +50,29 @@
     </mat-form-field>
 
     <div class="row">
-      <button (click)="closeDialog()" class="w-50"
-              mat-button mat-dialog-close disableRipple>
+      <button (click)="closeDialog()" class="w-100"
+              mat-button mat-dialog-close disableRipple
+              style="color: #ffffff;
+              background-color: #f87806;
+              font-family: 'TT Travels Medium';
+              margin-bottom: 10px;
+              height: 42px">
         Закрыть
       </button>
-      <button color="primary" class="w-50" [disabled]="postEditForm.invalid" (click)="submit()" mat-button disableRipple>
+      <button color="primary" class="w-100" [disabled]="postEditForm.invalid" (click)="submit()" mat-button disableRipple
+              style="color: #ffffff;
+              background-color: #f87806;
+              font-family: 'TT Travels Medium';
+              margin-bottom: 10px;
+              height: 42px">
         Обновить
       </button>
-      <button color="white" class="w-50" [disabled]="postEditForm.invalid" (click)="delete()" mat-button disableRipple>
+      <button color="white" class="w-100" [disabled]="postEditForm.invalid" (click)="delete()" mat-button disableRipple
+              style="color: #f0f0f0;
+              background-color: #f87806;
+              font-family: 'TT Travels Medium';
+              margin-bottom: 20px;
+              height: 42px">
         Удалить
       </button>
     </div>

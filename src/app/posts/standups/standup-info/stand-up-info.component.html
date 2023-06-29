@@ -1,66 +1,74 @@
 <div *ngIf="isPostLoaded && isUserDataLoaded" class="post-profile">
 
   <div style="text-align: right">
-    <button mat-flat-button color="primary" *ngIf="isAdmin" (click)="openEditDialog()">Редактировать</button>
+    <button mat-flat-button style="border-radius: 10px;
+    width: 190px; height: 42px;
+    background-color: #f87806;
+    color: #f0f0f0;
+    font-family: 'TT Travels Medium'" *ngIf="isAdmin" (click)="openEditDialog()">Редактировать</button>
   </div>
 
   <div style="padding-top: 2rem;" class="row">
-    <div>
-      <h1 style="float: left; display: inline-block;">
+    <div style="display: flex; align-items: center;
+    justify-content: space-between">
+      <h1 style="margin-right: auto; text-align: left; font-size: calc(32px + (52 - 32) * ((100vw - 480px) / (1600 - 480)))">
         {{post.title}}
       </h1>
-      <button style="float: right; display: inline-block; margin-right: 30px"
+      <button style="margin-left: 30px; border-radius: 10px; width: 60px; height: 42px"
               *ngIf="isUserDataLoaded" mat-button
               (click)="likePost()"
               [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
         <mat-icon class="icon-display">favorite</mat-icon>
-        {{post.usersLiked.length}}
+        <span [style.color]="post.usersLiked.indexOf(user.username) !== -1 ? '#f0f0f0' : '#0f0f0f'">{{post.usersLiked.length}}</span>
       </button>
     </div>
 
-    <div>
-      <img class="post-image2" [src]="(post.image)" alt="post image">
+    <div style="margin-top: 40px">
+      <img class="post-image2" [src]="(post.image)" alt="post image" style="border-radius: 15px;">
     </div>
 
     <mat-divider style="margin: 2rem 0"></mat-divider>
 
     <div class="col-8" style="text-align: left">
+
       <div *ngIf="post.info != ''" style="text-align: left">
-        <h1>О концерте</h1>
-        <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
+        <h2 style="margin-bottom: 20px; margin-top: 40px">О концерте</h2>
+        <pre><h5 style="white-space: pre-line; font-size: 18px">{{post.info}}</h5></pre>
       </div>
 
       <div *ngIf="post.executor != ''" style="text-align: left">
-        <h1>Исполнитель</h1>
-        <h5>{{post.executor}}</h5>
+        <h2 style="margin-bottom: 20px; margin-top: 40px">Исполнитель</h2>
+        <h5 style="font-size: 18px">{{post.executor}}</h5>
       </div>
-      <h5>{{post.shortInfo}}</h5>
+      <h5 style="font-size: 18px">{{post.shortInfo}}</h5>
     </div>
 
-    <div class="col-4">
-      <br><br>
+    <div class="col-4" style="text-align: left">
+
       <div style="display: flex; flex-wrap: wrap">
-        <div style="margin: 10px" *ngFor="let genre of genres">
-          <h5 class="element2" style="text-align: center;">{{genre}}</h5>
+        <div style="margin: 10px;  white-space: nowrap" *ngFor="let genre of genres">
+          <h5 class="element2" style="text-align: center; font-size: 18px; font-family: 'TT Travels DemiBold'">{{genre}}</h5>
         </div>
       </div>
 
-      <div *ngIf="post.address != '\n\n'" style="text-align: left">
-        <div style="position: absolute; margin-left: 20px">
-          <h2 style="color: aliceblue">Адрес</h2>
-          <pre><h5 style="color: aliceblue; white-space: pre-line">{{post.address}}</h5></pre>
+      <ng-container *ngIf="post.address != '\n\n'">
+        <div class="black-box" style="background-color: #0f0f0f; margin-top: 40px; border-radius: 10px; display: flex; margin-bottom: 20px; padding: 32px 40px 12px 40px;">
+        <div style="text-align: left">
+          <h2 style="color: #f0f0f0; font-size: 20px; text-align: left; margin-bottom: 12px">Адрес</h2>
+          <pre><h5 style="color: #f0f0f0; font-size: 16px; word-wrap: break-word">{{post.address}}</h5></pre>
         </div>
-        <img src="../../../../assets/image/rectangle129436-owk-200h.png" height="170" width="350"/>
       </div>
-      <br>
-      <div *ngIf="post.metro != ''" style="text-align: left">
-        <div style="position: absolute; margin-left: 20px">
-          <h2 style="color: aliceblue">Метро</h2>
-          <pre><h5 style="color: aliceblue">{{post.metro}}</h5></pre>
+      </ng-container>
+
+      <ng-container *ngIf="post.metro != ''">
+        <div class="black-box" style="background-color: #0f0f0f; border-radius: 10px; padding: 35px 40px 12px 40px; display: flex">
+        <div style="text-align: left">
+          <h2 style="color: #f0f0f0; font-size: 20px; text-align: left; margin-bottom: 12px">Метро</h2>
+          <pre><h5 style="color: #f0f0f0; font-size: 16px; word-wrap: break-word">{{post.metro}}</h5></pre>
         </div>
-        <img src="../../../../assets/image/rectangle129436-owk-200h.png" height="110" width="350"/>
-      </div>
     </div>
+    </ng-container>
+  </div>
 
     <div style="text-align: left; margin-top: 100px">
       <h2>Отзывы</h2>

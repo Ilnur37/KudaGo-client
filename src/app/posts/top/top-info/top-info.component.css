@@ -16,10 +16,18 @@
 }
 
 .element2 {
-  width: 160px;
+  width: fit-content;
   height: 40px;
-  border: 3px solid black;
+  padding: 1px 20px;
+  margin-right: 5px;
+  margin-bottom: -5px;
+  margin-left: -10px;
+  color: #0f0f0f;
   border-radius: 10px;
+  border: 2px solid #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon-display {
@@ -35,9 +43,23 @@ h5 {
 }
 
 .is-liked {
-  color: darkorange;
+  background-color: #f87806;
+  color: #f0f0f0;
+}
+
+.is-liked .icon-display, .is-liked span {
+  color: #f0f0f0;
+  transform: scale(1.5);
 }
 
 .not-liked {
-  color: grey;
+  background-color: #f0f0f0;
+  color: #0f0f0f;
 }
+
+.not-liked .icon-display, .not-liked span {
+  color: #0f0f0f;
+  transform: scale(1.5);
+}
+
+

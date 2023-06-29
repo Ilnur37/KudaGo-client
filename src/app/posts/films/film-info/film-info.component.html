@@ -1,48 +1,55 @@
 <div *ngIf="isPostLoaded && isUserDataLoaded" class="post-profile">
 
   <div style="text-align: right">
-    <button mat-flat-button color="primary" *ngIf="isAdmin" (click)="openEditDialog()">Редактировать</button>
+    <button mat-flat-button style="border-radius: 10px;
+    width: 190px; height: 42px;
+    background-color: #f87806;
+    color: #f0f0f0;
+    font-family: 'TT Travels Medium'" *ngIf="isAdmin" (click)="openEditDialog()">Редактировать</button>
   </div>
 
   <div style="padding-top: 2rem;" class="row">
-    <div>
-      <h1 style="float: left; display: inline-block;">
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <h1 style="margin-right: auto; text-align: left;
+      font-size: calc(32px + (52 - 32) * ( (100vw - 480px) / (1600 - 480) ))">
         {{post.title}}
       </h1>
-      <button style="float: right; display: inline-block; margin-right: 30px"
+      <button style="margin-left: 30px; border-radius: 10px; width: 60px; height: 42px"
               *ngIf="isUserDataLoaded" mat-button
               (click)="likePost()"
               [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
         <mat-icon class="icon-display">favorite</mat-icon>
-        {{post.usersLiked.length}}
+        <span [style.color]="post.usersLiked.indexOf(user.username) !== -1 ? '#f0f0f0' : '#0f0f0f'">{{post.usersLiked.length}}</span>
       </button>
     </div>
 
-    <div>
-      <img class="post-image2" [src]="(post.image)" alt="post image">
+    <div style="margin-top: 40px">
+      <img class="post-image2" [src]="(post.image)" alt="post image" style="border-radius: 15px;">
     </div>
 
     <mat-divider style="margin: 2rem 0"></mat-divider>
 
     <div class="col-8" style="text-align: left">
-      <h5>{{post.shortInfo}}</h5>
+      <h5 style="margin-top: 20px; margin-bottom: 40px; font-size: 18px">{{post.shortInfo}}</h5>
       <br>
       <div *ngIf="post.info != ''" style="text-align: left">
-        <h1>О фильме</h1>
-        <pre><h5 style="white-space: pre-line;">{{post.info}}</h5></pre>
+        <h2 style="margin-bottom: 20px;">О фильме</h2>
+        <pre><h5 style="white-space: pre-line; font-size: 18px">{{post.info}}</h5></pre>
       </div>
       <br>
     </div>
 
-    <div class="col-4">
-      <br><br>
+    <div class="col-4" style="text-align: left">
       <div style="display: flex; flex-wrap: wrap">
-        <div style="margin: 10px" *ngFor="let genre of genres">
-          <h5 class="element2" style="text-align: center;">{{genre}}</h5>
+        <div style="margin: 10px; white-space: nowrap" *ngFor="let genre of genres">
+          <h5 class="element2" style="text-align: center; font-size: 18px; font-family: 'TT Travels DemiBold'">{{genre}}</h5>
         </div>
       </div>
-      <h2>Рейтинг кинопоиска: </h2>
-      <h4 *ngIf="post.rating != ''">{{post.rating}}</h4>
+
+      <div class="rating-box" style="background-color: #0f0f0f; border-radius: 10px; padding: 40px 40px 30px; margin-top: 40px">
+      <h2 style="color: #f0f0f0; font-size: 18px; text-align: left">Рейтинг кинопоиска: </h2>
+      <h4 *ngIf="post.rating != ''" style="color: #f0f0f0; font-size: 24px; text-align: left">{{post.rating}}</h4>
+    </div>
     </div>
 
     <div style="text-align: left; margin-top: 100px">

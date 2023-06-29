@@ -5,14 +5,14 @@
       <div class="justify-content-center">
         <div></div>
         <mat-form-field style="width: 25%" appearance="outline">
-          <mat-label>Email Address</mat-label>
+          <mat-label>Почта</mat-label>
           <input matInput
                  formControlName="username">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field style="width: 25%" appearance="outline">
-          <mat-label>Password</mat-label>
+          <mat-label>Пароль</mat-label>
           <input
                  matInput type="password"
                  formControlName="password">
@@ -20,7 +20,12 @@
       </div>
 
       <div id="controls" class="row">
-        <button style="width: 20%" [disabled]="loginForm.invalid" (click)="submit()" mat-flat-button color="primary">
+        <button style="width: 15%;
+        border-radius: 8px;
+        height: 42px;
+        background-color: #f87806;
+        color: #f0f0f0;
+        font-family: 'TT Travels Medium'" [disabled]="loginForm.invalid" (click)="submit()" mat-flat-button color="primary">
           Войти
         </button>
 
