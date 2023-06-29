@@ -1,0 +1,47 @@
+<div class="edit-post">
+  <h2>Редактирование карточки</h2>
+  <form [formGroup]="postEditForm" class="form-horizontal">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Название</mat-label>
+      <input matInput
+             formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Полная информация</mat-label>
+      <textarea style="height: 150px" matInput
+                formControlName="info"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Жанр</mat-label>
+      <input matInput
+             formControlName="genre">
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Адрес</mat-label>
+      <textarea style="height: 100px" matInput
+                formControlName="address"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Фото главной страницы</mat-label>
+      <input matInput
+             formControlName="mainImage">
+    </mat-form-field>
+
+    <div class="row">
+      <button (click)="closeDialog()" class="w-50"
+              mat-button mat-dialog-close disableRipple>
+        Закрыть
+      </button>
+      <button color="primary" class="w-50" [disabled]="postEditForm.invalid" (click)="submit()" mat-button disableRipple>
+        Обновить
+      </button>
+      <button color="white" class="w-50" [disabled]="postEditForm.invalid" (click)="delete()" mat-button disableRipple>
+        Удалить
+      </button>
+    </div>
+  </form>
+</div>

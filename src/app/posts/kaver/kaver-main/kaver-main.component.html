@@ -1,0 +1,44 @@
+<div *ngIf="isPostsLoaded && isUserDataLoaded" class="index-page">
+
+  <div style="display:inline-block; margin-right: 30px">
+    <mat-form-field class="example-full-width">
+      <mat-label>Поиск</mat-label>
+      <input matInput placeholder="" type="text" [(ngModel)]="titleSearch">
+    </mat-form-field>
+  </div>
+  <div style="display:inline-block; margin-right: 30px">
+    <mat-form-field appearance="fill">
+      <mat-label>По популярности</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option>None</mat-option>
+        <mat-option value="asc">По возрастанию</mat-option>
+        <mat-option value="desc">По убыванию</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div style="display:inline-block; margin-right: 30px; float: right">
+    <button mat-flat-button color="primary" [routerLink]="['/kaver/', selected]">Применить</button>
+  </div>
+
+  <div style="display:inline-block; margin-right: 30px; float: right">
+    <button mat-stroked-button color="primary" (click)="selected = 'default'; titleSearch = ''">Очистить поля</button>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap">
+    <mat-card class="post-card" *ngFor="let post of posts | filter:titleSearch; let i = index">
+      <img mat-card-image style="height: 220px; width: 380px" [src]="(post.mainImage)" alt="post image">
+      <mat-card-content style="margin-top: -40px">
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title style="margin-top: -5px" [routerLink]="[post.referenceInfo, post.id]">{{post.title}}</mat-card-title>
+        <p>{{post.address}}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button *ngIf="isUserDataLoaded" mat-button (click)="likePost(post.id)" [ngClass]="post.usersLiked.indexOf(user.username) !== -1 ? 'is-liked' : 'not-liked'">
+          <mat-icon class="icon-display">favorite</mat-icon>{{post.usersLiked.length}}</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+</div>
