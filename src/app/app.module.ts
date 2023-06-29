@@ -32,6 +32,12 @@ import { TopEditComponent } from './posts/admin/top-edit/top-edit.component';
 import { TheaterMainComponent } from './posts/theaters/theater-main/theater-main.component';
 import { TheaterInfoComponent } from './posts/theaters/theater-info/theater-info.component';
 import { TheaterEditComponent } from './posts/admin/theater-edit/theater-edit.component';
+import { KaverMainComponent } from './posts/kaver/kaver-main/kaver-main.component';
+import { KaverInfoComponent } from './posts/kaver/kaver-info/kaver-info.component';
+import { KaverEditComponent } from './posts/admin/kaver-edit/kaver-edit.component';
+import { TagMainComponent } from './posts/tag/tag-main/tag-main.component';
+import { TagInfoComponent } from './posts/tag/tag-info/tag-info.component';
+import { TagEditComponent } from './posts/admin/tag-edit/tag-edit.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +64,12 @@ import { TheaterEditComponent } from './posts/admin/theater-edit/theater-edit.co
     TheaterMainComponent,
     TheaterInfoComponent,
     TheaterEditComponent,
+    KaverMainComponent,
+    KaverInfoComponent,
+    KaverEditComponent,
+    TagMainComponent,
+    TagInfoComponent,
+    TagEditComponent,
   ],
   imports: [
     BrowserModule,

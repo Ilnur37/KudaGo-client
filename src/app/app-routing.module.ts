@@ -14,6 +14,10 @@ import {TopMainComponent} from "./posts/top/top-main/top-main.component";
 import {TopInfoComponent} from "./posts/top/top-info/top-info.component";
 import {TheaterMainComponent} from "./posts/theaters/theater-main/theater-main.component";
 import {TheaterInfoComponent} from "./posts/theaters/theater-info/theater-info.component";
+import {KaverMainComponent} from "./posts/kaver/kaver-main/kaver-main.component";
+import {KaverInfoComponent} from "./posts/kaver/kaver-info/kaver-info.component";
+import {TagMainComponent} from "./posts/tag/tag-main/tag-main.component";
+import {TagInfoComponent} from "./posts/tag/tag-info/tag-info.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -43,6 +47,11 @@ const routes: Routes = [
   {path: 'theater/:sorted', component: TheaterMainComponent, canActivate: [AuthGuardService]},
   {path: 'theater/info/:id', component: TheaterInfoComponent, canActivate: [AuthGuardService]},
 
+  {path: 'kaver/:genre/:sorted', component: KaverMainComponent, canActivate: [AuthGuardService]},
+  {path: 'kaver-info/info/:id', component: KaverInfoComponent, canActivate: [AuthGuardService]},
+
+  {path: 'tag/:genre/:sorted', component: TagMainComponent, canActivate: [AuthGuardService]},
+  {path: 'tag-info/info/:id', component: TagInfoComponent, canActivate: [AuthGuardService]},
 
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'}
